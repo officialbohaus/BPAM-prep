@@ -1,28 +1,28 @@
 public class PantryNode {
-    /* this represents each "box" for foods, it will combine a food item with a
+    /* this represents each "box" for ingredients, it will combine an IID with a
      * quantity.
      */
 
-     private Ingredient ingredient;
+     // TODO: bad practice to keep ingredient too? This may cause errors
+     private final Ingredient ingredient;
+     private final String IID;
      private int quantity;
 
+     // Constructor ===========================================================================
      public PantryNode(Ingredient ingredient) {
         this(ingredient, 0);
      }
 
      public PantryNode(Ingredient ingredient, int quantity) {
         this.ingredient = ingredient;
+        this.IID = ingredient.getID();
         this.quantity = quantity;
      }
 
-     public int getQty() { return this.quantity; }
 
-     public String getID() { return ingredient.getID(); }
 
-     public void setQty(int quantity) {
-        this.quantity = quantity;
-     }
-
+     // Transaction Methods =======================================================================
+     //  TODO: prevent negative qty and invalid transactions. Throw exceptions.
      public void removeQty() { removeQty(1); }
 
      public void removeQty(int quantity) {
@@ -36,10 +36,19 @@ public class PantryNode {
         this.quantity += quantity;
      }
 
+     public void setQty(int quantity) { this.quantity = quantity; }
+
+     // Query Methods ==============================================================================
      public boolean isIngredient(Ingredient ingredient) {
       // if this ingredient id matches passed ingredient id
-      return this.ingredient.isEqual(ingredient);
+      return IID.equals(ingredient.getID());
      }
+
+     public int getQty() { return quantity; }
+
+     public String getID() { return IID; }
+
+
 
 
 }
