@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 public class IngredientRegistry { 
-    //This will store all created foodIDs for reusabilty.  
+    //This will store all created foodIDs for reusabilty.
+    // TODO: NOT YET IMPLEMENTED!
 
     private ArrayList<String> foodIDs = new ArrayList<>();
 
