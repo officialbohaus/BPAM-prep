@@ -36,5 +36,10 @@ public class PantryNode {
         this.quantity += quantity;
      }
 
+     public boolean isIngredient(Ingredient ingredient) {
+      // if this ingredient id matches passed ingredient id
+      return this.ingredient.isEqual(ingredient);
+     }
+
 
 }
