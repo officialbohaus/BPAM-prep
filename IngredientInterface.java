@@ -6,4 +6,5 @@ public interface IngredientInterface {
 
     public IngredientType getType();
 
+    public boolean isEqual(Ingredient ingredient);
 }
