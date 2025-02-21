@@ -1,5 +1,5 @@
 public class Ingredient implements IngredientInterface {
-    private int id;
+    private String id;
     private int qty;
     private String name;
     private IngredientType primaryType;
@@ -7,16 +7,16 @@ public class Ingredient implements IngredientInterface {
     
 
     // Constructor
-    public Ingredient(int id, String name, int qty, IngredientType primaryType, String details) {
-        this.id = id;
+    public Ingredient(String name, int qty, IngredientType primaryType, String details) {
         this.name = name;
         this.qty = qty;
         this.primaryType = primaryType;
         this.details = details;
+        this.id = primaryType + "-" + name;
     }
 
     // getters
-    public int getID() {
+    public String getID() {
         return id;
     }
 
@@ -78,6 +78,6 @@ public class Ingredient implements IngredientInterface {
 
     @Override
     public boolean isEqual(Ingredient ingredient) {
-        
+        return true;
     }
 }
