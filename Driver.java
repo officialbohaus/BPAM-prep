@@ -21,6 +21,6 @@ public class Driver {
         System.out.println(myPantry.contains(sugar));
 
         System.out.println(myPantry);
-        System.out.println(IIDGenerator.genIID());
+        System.out.println(IIDGenerator.genIID(IngredientType.Dairy, "Milk"));
     }
 }
