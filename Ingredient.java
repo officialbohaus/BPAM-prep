@@ -12,7 +12,7 @@ public class Ingredient implements IngredientInterface {
         this.qty = qty;
         this.primaryType = primaryType;
         this.details = details;
-        this.id = primaryType + "-" + name;
+        this.id = primaryType.getTypeID() + "-" + name;
     }
 
     // getters
