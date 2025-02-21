@@ -1,3 +1,5 @@
+
+
 public class Driver {
     public static void main(String[] args) {
         Ingredient apple = new Ingredient("Apple", 0, IngredientType.Fruit, "n/a");
@@ -19,5 +21,6 @@ public class Driver {
         System.out.println(myPantry.contains(sugar));
 
         System.out.println(myPantry);
+        System.out.println(IIDGenerator.genIID());
     }
 }

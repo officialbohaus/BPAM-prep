@@ -1,3 +1,5 @@
-static public class IIDGenerator {
-    
+public class IIDGenerator {
+    public static String genIID() {
+        return "";
+    }
 }
