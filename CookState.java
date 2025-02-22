@@ -6,6 +6,7 @@ public enum CookState {
     GRILLED("Grl"),
     ROASTED("Rst"),
     SMOKED("Smk"),
+    STEWED("Stw"),
     TOASTED("Tst");
 
     private String cookID;
