@@ -5,6 +5,7 @@ public enum CutState {
     DICED("Di"),
     MINCED("Min"),
     SHREDDED("Shr"),
+    GROUND("Grd"),
     JULIENNED("Juli");
 
     private String cutID;
@@ -12,7 +13,7 @@ public enum CutState {
     private CutState(String cutID) {
         this.cutID = cutID;
     }
-    
+
     public String getCutID() {
         return cutID;
     }
