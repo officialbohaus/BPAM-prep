@@ -22,5 +22,6 @@ public class Driver {
 
         System.out.println(myPantry);
         System.out.println(IIDGenerator.genIID(IngredientType.Dairy, "Milk"));
+        System.out.println(IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM));
     }
 }
