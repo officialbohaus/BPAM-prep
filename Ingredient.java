@@ -78,6 +78,6 @@ public class Ingredient implements IngredientInterface {
 
     @Override
     public boolean isEqual(Ingredient ingredient) {
-        return true;
+        return this.id.equals(ingredient.id);         
     }
 }
