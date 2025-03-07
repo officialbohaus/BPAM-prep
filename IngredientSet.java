@@ -7,5 +7,7 @@ public class IngredientSet {
 
     }
 
-    public IngredientSet(IID)
+    public IngredientSet(IID) {
+        
+    }
 }
