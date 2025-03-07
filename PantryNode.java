@@ -7,6 +7,7 @@ public class PantryNode {
      private final Ingredient ingredient;
      private final String IID;
      private int quantity;
+     //private final QuantityType qtyType;
 
      // Constructor ===========================================================================
      public PantryNode(Ingredient ingredient) {
