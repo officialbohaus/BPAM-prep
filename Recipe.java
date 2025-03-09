@@ -1,3 +1,5 @@
+import javax.management.RuntimeErrorException;
+
 public class Recipe {
     /*
      * -The recipe class should take an ingredient set and pair each IID in the set with a quantity value.
@@ -29,16 +31,25 @@ public class Recipe {
        this.ingredientQuantity = ingredientQuantity;
     }
 
+    public Recipe(String[] ingredientString, int[] ingredientQuantity) {
+        this.ingredientString = ingredientString;
+        this.ingredientQuantity = ingredientQuantity;
+    }
+
     public String getIngredientQuantity(String ingredientName) {
        try {
+            if (ingredientString.length != ingredientQuantity.length) {
+                throw new RuntimeException("Incompatible arrays");
+            }
 
-           for (int i = 0; i < ingredientName.length(); i++) {
+           for (int i = 0; i < ingredientString.length; i++) {
                if (ingredientString[i].equalsIgnoreCase(ingredientName)) {
                    return Integer.toString(ingredientQuantity[i]);
                }
            } 
 
        } catch (RuntimeException exception) {
+           System.out.println(exception);
            System.out.println("Wrong name?");
        }
 
