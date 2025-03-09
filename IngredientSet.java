@@ -34,7 +34,7 @@ public class IngredientSet {
 
     }
 
-    public IngredientSet(IID) {
+    public IngredientSet(String description, String... IID) {
         
     }
 }
