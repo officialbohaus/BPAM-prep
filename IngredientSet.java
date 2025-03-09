@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class IngredientSet {
+public class IngredientSet implements IngredientInterface{
     /*
      * The IngredientSet represents a collection of ingredients.
      * - This class is intended to be used to group IIDs together as needed by user (we are the users).
@@ -34,7 +34,39 @@ public class IngredientSet {
 
     }
 
+    public IngredientSet(String description) {
+
+    }
+
+    public IngredientSet(String... IID) {
+        
+    }
+
     public IngredientSet(String description, String... IID) {
         
+    }
+
+    @Override
+    public String getID() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getID'");
+    }
+
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    }
+
+    @Override
+    public IngredientType getType() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+    }
+
+    @Override
+    public boolean isEqual(Ingredient ingredient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isEqual'");
     }
 }
