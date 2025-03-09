@@ -9,6 +9,9 @@ public class IngredientSet {
      * - The set does not need to maintain a quantity for any IID
      * - This class should have a method that compares it to another IngredientSet, returning the
      *   differences between the two.
+     *      - For now, lets return a String array with each difference found. Example:
+     *          [Chicken-Pr-Raw --> Chicken-Pr-Bake]
+     *          [       OLD-IID --> NEW-IID        ]
      * - Should be able to add and remove IIDs from IngredientSet
      * - Should return a COPY of the IngredientSet array
      *      - return a copy, because returning the actual array will break encapsulation.
