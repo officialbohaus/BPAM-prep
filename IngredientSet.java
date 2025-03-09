@@ -34,6 +34,14 @@ public class IngredientSet implements IngredientInterface{
 
     }
 
+    public IngredientSet(String description) {
+
+    }
+
+    public IngredientSet(String... IID) {
+        
+    }
+
     public IngredientSet(String description, String... IID) {
         
     }
