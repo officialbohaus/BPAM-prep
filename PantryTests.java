@@ -3,31 +3,27 @@ import org.junit.Test;
 public class PantryTests {
 
     // TODO: populate with unique IIDs once class is ready
-    private final Ingredient INGREDIENT_A = new Ingredient();
-    private final Ingredient INGREDIENT_B = new Ingredient();
-    private final Ingredient INGREDIENT_C = new Ingredient();
+
+    // Shouldn't be generated here, rather should be the correct string. We test generation later.
+    private final String IID_A = IIDGenerator.genIID(null, null);
+    private final String IID_B = IIDGenerator.genIID(IID_A, null, null, null, null);
+    private final String IID_C = IIDGenerator.genIID(null, IID_A);
+
+    // IIDGenerator Tests =========================================================
+    @Test
+    void IID_A_Generated() {
+
+    }
 
     @Test
-    void emptyIngredientCreated() {}
-    private Ingredient createEmptyIngredient() {}
+    void IID_B_Generated() {
+
+    }
 
     @Test
-    void ingredientACreated() {}
-    private Ingredient createIngredientA() {}
+    void IID_C_Generated() {
 
-
-    @Test
-    void ingredientBCreated() {}
-    private Ingredient createIngredientB() {}
-
-    @Test
-    void ingredientCCreated() {}
-    private Ingredient createIngredientC() {}
-
-    @Test
-    void emptyPantryNodeCreated() {}
-    private PantryNode createEmptyPantryNode() {}
-
+    }
 
     // PantryNode Tests ===========================================================
     @Test
