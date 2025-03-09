@@ -14,43 +14,49 @@ public class Recipe {
     private IngredientSet[] ingredients;
     private int[] ingredientQuantity;
     private String[] ingredientString;
+    private int index;
    
     public Recipe(IngredientSet[] ingredients) {
        this.ingredients = ingredients;
-       ingredientQuantity = new int[ingredients.length - 1];
-       ingredientString = new String[ingredients.length - 1];
+       ingredientQuantity = new int[ingredients.length];
+       ingredientString = new String[ingredients.length];
     
        for (int i = 0; i < ingredients.length; i++) {
            ingredientString[i] = ingredients[i].toString();
        }
     }
 
-
-    public Recipe(IngredientSet[] ingredients, int[] ingredientQuantity) {
-       this.ingredients = ingredients;
-       this.ingredientQuantity = ingredientQuantity;
+    public Recipe(String[] ingredientString) {
+       this.ingredientString= ingredientString;
+        ingredientQuantity = new int[ingredientString.length];
     }
 
-    public Recipe(String[] ingredientString, int[] ingredientQuantity) {
-        this.ingredientString = ingredientString;
-        this.ingredientQuantity = ingredientQuantity;
+    public void setIngredientQuantity(String ingredientName, int quantity) {
+        for (int i = 0; i < ingredientString.length; i++) {
+            if (ingredientName.equalsIgnoreCase(ingredientString[i])) {
+                index = i;
+            }
+        }
+        ingredientQuantity[index] = quantity;
     }
 
+    // TODO: Duplicate array
     public String getIngredientQuantity(String ingredientName) {
-       try {
+        try {
             if (ingredientString.length != ingredientQuantity.length) {
-                throw new RuntimeException("Incompatible arrays");
+                throw new IncompatibleArraysException("Incompatible arrays");
             }
 
-           for (int i = 0; i < ingredientString.length; i++) {
+            for (int i = 0; i < ingredientString.length; i++) {
                if (ingredientString[i].equalsIgnoreCase(ingredientName)) {
                    return Integer.toString(ingredientQuantity[i]);
                }
            } 
 
+       } catch (IncompatibleArraysException exception) {
+            System.out.println(exception);
        } catch (RuntimeException exception) {
-           System.out.println(exception);
-           System.out.println("Wrong name?");
+            System.out.println("Wrong name?");
        }
 
        return "Ingredient not found.";
