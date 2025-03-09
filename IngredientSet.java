@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class IngredientSet {
     /*
      * The IngredientSet represents a collection of ingredients.
-     * - This class is intended to be used to group IIDs together as needed by user.
+     * - This class is intended to be used to group IIDs together as needed by user (we are the users).
      *      - The relation between IIDs can be described in the description String, if desired
      *      - e.g. all IIDs related to a recipe, etc.
      * - The set does not need to maintain a quantity for any IID
@@ -18,7 +18,7 @@ public class IngredientSet {
      *          - (i.e. if the user decides the relation should be "vegan ingredients", and the user
      *              later adds eggs, the invalid relation is on them.)
      * - Should have appropriate getters and setters
-     * - Constructor should be overloaded with multiple options
+     * - Constructor should be overloaded with multiple options to fill the set.
      *  - empty
      *  - multiple args
      *  - some pre-existing iterable of IIDs (TODO once iterables are covered in class)
