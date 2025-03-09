@@ -6,7 +6,8 @@ public enum CutState {
     MINCED("Min"),
     SHREDDED("Shr"),
     GROUND("Grd"),
-    JULIENNED("Juli");
+    JULIENNED("Juli"),
+    NONE("N/A");
 
     private String cutID;
 

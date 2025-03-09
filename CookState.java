@@ -8,7 +8,8 @@ public enum CookState {
     SMOKED("Smk"),
     STEWED("Stw"),
     STEAMED("Ste"),
-    TOASTED("Tst");
+    TOASTED("Tst"),
+    NONE("N/A");
 
     private String cookID;
 

@@ -1,6 +1,6 @@
 public enum IngredientUnit {
-    GRAM("Gr"),
-    MILLILITER("Ml"),
+    GRAM("g"),
+    MILLILITER("mL"),
     UNIT("Ut");
 
     private String unitID;
