@@ -8,6 +8,41 @@ public class Recipe {
      * - Appropriate getters, setter, and constructors
      * 
      */
+
+    private IngredientSet[] ingredients;
+    private int[] ingredientQuantity;
+    private String[] ingredientString;
+   
+    public Recipe(IngredientSet[] ingredients) {
+       this.ingredients = ingredients;
+       ingredientQuantity = new int[ingredients.length - 1];
+       ingredientString = new String[ingredients.length - 1];
     
+       for (int i = 0; i < ingredients.length; i++) {
+           ingredientString[i] = ingredients[i].toString();
+       }
+    }
+
+
+    public Recipe(IngredientSet[] ingredients, int[] ingredientQuantity) {
+       this.ingredients = ingredients;
+       this.ingredientQuantity = ingredientQuantity;
+    }
+
+    public String getIngredientQuantity(String ingredientName) {
+       try {
+
+           for (int i = 0; i < ingredientName.length(); i++) {
+               if (ingredientString[i].equalsIgnoreCase(ingredientName)) {
+                   return Integer.toString(ingredientQuantity[i]);
+               }
+           } 
+
+       } catch (RuntimeException exception) {
+           System.out.println("Wrong name?");
+       }
+
+       return "Ingredient not found.";
+    } 
      
 }
