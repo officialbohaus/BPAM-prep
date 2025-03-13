@@ -19,70 +19,126 @@ public abstract class RecipeStep implements CookInterface, CutInterface {
     /* *
      * Cook Methods
      * TODO Provide guard statements and exception handling (e.g. if IID is not in a valid format)
+     *      For valid IID Format, look at IID_ORDER
      */
 
-    @Override
     public String bake(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.BAKED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.BAKED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
-    @Override
     public String fry(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.FRIED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.FRIED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String sautee(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.SAUTEED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.SAUTEED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String roast(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.ROASTED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.ROASTED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String smoke(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.SMOKED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.SMOKED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String stew(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.STEWED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.STEWED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String steam(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.STEAMED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.STEAMED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
 
     public String toast(String IID) {
-        IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CookState.TOASTED.getCookID();
-        newIID = IIDParser.getIID(IIDComponents);
-        return newIID;
+        try {
+            Guards.checkIID(IID);
+
+            IIDComponents =  IIDParser.parseIID(IID);
+            IIDComponents[COOK_INDEX] = CookState.TOASTED.getCookID();
+            newIID = IIDParser.getIID(IIDComponents);
+            return newIID;
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+        return null;
     }
     
 /* ----------------------------------------------------------------------------------------------------------------- */
     /* *
      * Cut Methods
      * TODO Provide guard statements and exception handling (e.g if IID is not in a valid format)
+     *      For valid IID Format, look at IID_ORDER
      */ 
 
     public String slice(String IID) {

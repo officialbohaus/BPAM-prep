@@ -1,12 +1,8 @@
 public class RecipeBefore extends RecipeStep implements RecipeInterface {
-
-    // private String[] ingredientString;
-    // private int[] ingredientQuantity;
+// TODO: Duplicate arrays for encapsulation
     
         public RecipeBefore(String[] ingredientString) {
         super(ingredientString, new int[ingredientString.length]);
-        // this.ingredientString = ingredientString;
-        // ingredientQuantity = new int[ingredientString.length];
     }
 
     public void setIngredientQuantity(String IID, int quantity) {
@@ -42,5 +38,17 @@ public class RecipeBefore extends RecipeStep implements RecipeInterface {
     public void steps() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steps'");
+    }
+
+    @Override
+    public void setIngredient(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setIngredient'");
+    }
+
+    @Override
+    public String getIngredient() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getIngredient'");
     }
 }

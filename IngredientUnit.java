@@ -13,7 +13,7 @@ public enum IngredientUnit {
         return unitID;
     }
 
-    public static IngredientUnit fromunitID(String unitID) {
+    public static IngredientUnit fromUnitID(String unitID) {
         for (IngredientUnit UnitID : values()) {
             if (UnitID.unitID.equalsIgnoreCase(unitID)) {
                 return UnitID;

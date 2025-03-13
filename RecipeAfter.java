@@ -1,4 +1,5 @@
 public class RecipeAfter implements RecipeInterface {
+// TODO: Duplicate arrays for encapsulation
 
     private String[] ingredientString;
     private int[] ingredientQuantity;
@@ -40,6 +41,18 @@ public class RecipeAfter implements RecipeInterface {
     public void steps() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steps'");
+    }
+
+    @Override
+    public void setIngredient(String name) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setIngredient'");
+    }
+
+    @Override
+    public String getIngredient() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getIngredient'");
     }
     
 }
