@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 public class PantryTests {
@@ -5,14 +8,15 @@ public class PantryTests {
     // TODO: populate with unique IIDs once class is ready
 
     // Shouldn't be generated here, rather should be the correct string. We test generation later.
-    private final String IID_A = IIDGenerator.genIID(null, null);
-    private final String IID_B = IIDGenerator.genIID(IID_A, null, null, null, null);
-    private final String IID_C = IIDGenerator.genIID(null, IID_A);
+    private final String IID_A = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
+    private final String IID_B = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
+    private final String IID_C = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
 
     // IIDGenerator Tests =========================================================
     @Test
     void IID_A_Generated() {
-
+        String genIID_A = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM);
+        assertTrue(genIID_A.compareTo(IID_A) == 0);
     }
 
     @Test
