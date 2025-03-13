@@ -21,6 +21,12 @@ public class IIDParser {
     }
 
     public static String getType(String IID) {
+        try {
+            Guards.checkIID(IID);
+        } catch (InvalidIIDException exception) {
+            System.out.println(exception + ": " + IID);
+        }
+
         return getComponent(IID, TYPE_INDEX);
     }
 
@@ -63,7 +69,7 @@ public class IIDParser {
         try {
             Guards.checkIID(IID);
             
-            String type = getComponent(IID, TYPE_INDEX);
+            String type = getComponent(IID, CUT_INDEX);
             
             return CutState.fromCutID(type);
         } catch (InvalidIIDException exception) {
@@ -80,7 +86,7 @@ public class IIDParser {
         try {
             Guards.checkIID(IID);
             
-            String type = getComponent(IID, TYPE_INDEX);
+            String type = getComponent(IID, UNIT_INDEX);
             
             return IngredientUnit.fromUnitID(type);
         } catch (InvalidIIDException exception) {

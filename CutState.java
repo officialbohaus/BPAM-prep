@@ -19,6 +19,14 @@ public enum CutState {
         return cutID;
     }
 
+    public static String[] getCutIDString() {
+        String[] cutIDString = new String[values().length];
+        for (int i = 0; i < values().length; i++) {
+            cutIDString[i] = values()[i].toString();
+        }
+        return cutIDString;
+    }
+
     public static CutState fromCutID(String cutID) {
         for (CutState cutState : values()) {
             if (cutState.cutID.equalsIgnoreCase(cutID)) {

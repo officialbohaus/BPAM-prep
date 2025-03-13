@@ -1,16 +1,20 @@
 public abstract class RecipeStep implements CookInterface, CutInterface {
 
-    protected String[] ingredientString, ingredientsAfter;
+    protected String[] ingredientString, ingredientsAfter; // stores ingredients before and after prep
     protected int[] ingredientQuantity;
     private String[] IIDComponents;
     static final String IID_ORDER = "name-ingtype-cook-cut-unit";
-    private final int CUT_INDEX;
-    private final int COOK_INDEX;
+    private final int COOK_INDEX,CUT_INDEX;
     private String newIID;
 
     protected RecipeStep(String[] ingredientString, int[] ingredientQuantity) {
-        this.ingredientString = ingredientString;
-        this.ingredientQuantity = ingredientQuantity;
+        // TODO Copy arrays
+        this.ingredientString = new String[ingredientString.length];
+        this.ingredientQuantity = new int[ingredientQuantity.length];
+        for (int i = 0; i < ingredientString.length; i++) {
+            this.ingredientString[i] = ingredientString[i];
+            this.ingredientQuantity[i] = ingredientQuantity[i];
+        }
         ingredientsAfter = new String[ingredientString.length];
         COOK_INDEX = 2;
         CUT_INDEX = 3;
@@ -143,14 +147,14 @@ public abstract class RecipeStep implements CookInterface, CutInterface {
 
     public String slice(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.SLICED.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.SLICED.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
 
     public String chop(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.CHOPPED.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.CHOPPED.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
@@ -164,28 +168,28 @@ public abstract class RecipeStep implements CookInterface, CutInterface {
 
     public String mince(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.MINCED.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.MINCED.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
 
     public String shred(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.SHREDDED.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.SHREDDED.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
 
     public String ground(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.GROUND.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.GROUND.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
 
     public String julienne(String IID) {
         IIDComponents =  IIDParser.parseIID(IID);
-        IIDComponents[COOK_INDEX] = CutState.JULIENNED.getCutID();
+        IIDComponents[CUT_INDEX] = CutState.JULIENNED.getCutID();
         newIID = IIDParser.getIID(IIDComponents);
         return newIID;
     }
