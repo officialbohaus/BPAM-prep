@@ -1,5 +1,3 @@
-
-
 public class Driver {
     public static void main(String[] args) {
         Ingredient apple = new Ingredient("Apple", 0, IngredientType.Fruit, "n/a");
@@ -11,33 +9,50 @@ public class Driver {
 
         ingredients = new String[3];
 
-        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.RAW, CutState.DICED, IngredientUnit.GRAM);
-        spinach = IIDGenerator.genIID("Spinach", IngredientType.Veggie, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
+        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.ROASTED, CutState.GROUND, IngredientUnit.GRAM);
+        spinach = IIDGenerator.genIID("Spinach", IngredientType.Fat, CookState.SAUTEED, CutState.CHOPPED, IngredientUnit.MILLILITER);
         butter = IIDGenerator.genIID("Butter", IngredientType.Fat, IngredientUnit.MILLILITER);
+
+        // String[] chickenIIDComponents = chicken.split("-");
+
+        // for (String component : chickenIIDComponents) {
+        //     System.out.println(component);
+        // }
+
+
+        System.out.println("Chicken IID: " + chicken);
+        System.out.println("Spinach IID: " + spinach);
+        System.out.println("Butter IID: " + butter);
 
         ingredients[0] = chicken;
         ingredients[1] = spinach;
         ingredients[2] = butter;
 
-        // ingredientQuantity[0] = 300;
-        // ingredientQuantity[1] = 5000;
-        // ingredientQuantity[2] = 150;
+        System.out.println("\ngetEnum tests");
+        System.out.println("Chicken type: " + IIDParser.getTypeEnum("Enum Type"));
+        System.out.println("Chicken cook state: " + IIDParser.getCookStateEnum(chicken));
+        System.out.println("Chicken cut state: " + IIDParser.getCutStateEnum(chicken));
+        System.out.println("Chicken unit: " + IIDParser.getUnitEnum(chicken));
 
-        Recipe recipe = new Recipe(ingredients);
+        System.out.println("\nCook and Cut Tests");
+        RecipeBefore recipeBefore = new RecipeBefore(ingredients);
+        System.out.println("Sliced Chicken: " + recipeBefore.slice(chicken));
+        System.out.println("Baked Chicken: " + recipeBefore.bake("")); // error test
+        System.out.println("Julienned Butter: " + recipeBefore.julienne(chicken));
 
-        recipe.setIngredientQuantity(chicken, 300);
-        recipe.setIngredientQuantity(spinach, 5000);
-        recipe.setIngredientQuantity(butter, 150);
-        recipe.setIngredientQuantity("some food", 666);
+        // setIngredientQuantity tests
+        recipeBefore.setIngredientQuantity(chicken, 3);
+        recipeBefore.setIngredientQuantity(spinach, 50);
+        recipeBefore.setIngredientQuantity(butter, 0);
 
-        chickenQuantity = Integer.parseInt(recipe.getIngredientQuantity(chicken));
-        spinachQuantity = Integer.parseInt(recipe.getIngredientQuantity(spinach));
-        butterQuantity = Integer.parseInt(recipe.getIngredientQuantity(butter));
-        unknownIngredient = Integer.parseInt(recipe.getIngredientQuantity("some food"));
+        unknownIngredient = recipeBefore.getIngredientQuantity("Sauce");
+        chickenQuantity = recipeBefore.getIngredientQuantity(chicken);
+        spinachQuantity = recipeBefore.getIngredientQuantity(spinach);
+        butterQuantity = recipeBefore.getIngredientQuantity(butter);
 
-        System.out.println("Chicken: "+ chickenQuantity);
-        System.out.println("Spinach: " + spinachQuantity);
-        System.out.println("Butter: " + butterQuantity);
-        System.out.println("Some food: " + recipe.getIngredientQuantity("some food"));
+        System.out.println(unknownIngredient);
+        System.out.println(chickenQuantity);
+        System.out.println(spinachQuantity);
+        System.out.println(butterQuantity);
     }
 }
