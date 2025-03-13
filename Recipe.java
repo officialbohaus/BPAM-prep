@@ -15,7 +15,7 @@ public class Recipe {
      * 
      */
 
-    private IngredientSet[] ingredients;
+    private IngredientSetInterface[] ingredients;
     private int[] ingredientQty;
     private String[] ingredientString;
     private int index;
@@ -23,7 +23,7 @@ public class Recipe {
 
     // TODO: Implement description and name
 
-    public Recipe(IngredientSet[] ingredients) {
+    public Recipe(IngredientSetInterface[] ingredients) {
         this.ingredients = ingredients;
         ingredientQty = new int[ingredients.length];
         ingredientString = new String[ingredients.length];
