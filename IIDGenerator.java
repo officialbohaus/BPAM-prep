@@ -1,3 +1,6 @@
+import Tags.CookState;
+import Tags.CutState;
+
 public class IIDGenerator {
     /*
      * The IID is a system of nomenclature for different food items

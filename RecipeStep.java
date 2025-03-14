@@ -1,3 +1,6 @@
+import Tags.CookState;
+import Tags.CutState;
+
 public abstract class RecipeStep implements CookInterface, CutInterface {
 
     protected String[] ingredientString, ingredientsAfter; // stores ingredients before and after prep

@@ -1,3 +1,6 @@
+import Tags.CookState;
+import Tags.CutState;
+
 public class IIDParser {
     
     // TODO: return appropriate enum types instead of strings

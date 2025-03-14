@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.Test;
 
+import Tags.CookState;
+import Tags.CutState;
+
 public class PantryTests {
 
     // TODO: populate with unique IIDs once class is ready
