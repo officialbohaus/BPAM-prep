@@ -38,7 +38,7 @@ public class Step extends CookAndCutAndShit {
          */
         for (int i = 0; i < ingredientSet.size(); i++) {
             String[] componentString = ingredientSet.get(i).toString().split("-");
-            if ()
+            // if ()
         }
         return "";
     }
@@ -69,6 +69,7 @@ public class Step extends CookAndCutAndShit {
             default:
                 break;
         }
+        return false; 
     }
 
     private int getIIDComponentsInLength(String[] IIDComponentsIn) {

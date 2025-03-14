@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public enum CookState {
     RAW("RAW"),
     BAKED("BAKE"),
@@ -30,7 +32,7 @@ public enum CookState {
         }
         return cookStateArrayList;
     }
-
+    
     public static CookState fromCookID(String cookID) {
         for (CookState cookState : values()) {
             if (cookState.cookID.equalsIgnoreCase(cookID)) {

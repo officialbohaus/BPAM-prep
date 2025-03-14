@@ -75,7 +75,7 @@ public class Recipe implements RecipeInterface {
         for (int i = 0; i < ingredientString.size(); i++) {
             // Use iterator
             // Pass in IID
-            if (ingredientName.equalsIgnoreCase(ingredientString.get(i))){
+            if (IID.equalsIgnoreCase(ingredientString.get(i))){
                 ingredientQuantity.set(i, quantity);
             }
         }
@@ -105,7 +105,7 @@ public class Recipe implements RecipeInterface {
     public int getIngredientQuantity(String IID) {
         // Use IID, not ingredientName
         for (int i = 0; i < ingredientString.size(); i++) {
-            if (ingredientName.equalsIgnoreCase(ingredientString.get(i))) {
+            if (IID.equalsIgnoreCase(ingredientString.get(i))) {
                 return ingredientQuantity.get(i);
             }
         }

@@ -1,7 +1,7 @@
 public class Driver {
     public static void main(String[] args) {
-        Ingredient apple = new Ingredient("Apple", 0, IngredientType.Fruit, "n/a");
-        Ingredient sugar = new Ingredient("Sugar", 0, IngredientType.Baking, "n.a");
+        Ingredient apple = new Ingredient("Apple", 0, IngredientType.FRUIT, "n/a");
+        Ingredient sugar = new Ingredient("Sugar", 0, IngredientType.BAKING, "n.a");
         String[] ingredients; 
         int[] ingredientQuantity;
         String chicken, spinach, butter, chickenBaked, spinachBlanched, mashedPotatoes;
@@ -9,12 +9,12 @@ public class Driver {
 
         ingredients = new String[3];
 
-        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
-        spinach = IIDGenerator.genIID("Spinach", IngredientType.Veggie, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
-        butter = IIDGenerator.genIID("Butter", IngredientType.Fat, IngredientUnit.MILLILITER);
-        mashedPotatoes = IIDGenerator.genIID("MashedPotatoes", IngredientType.Veggie, CookState.STEWED, CutState.GROUND, IngredientUnit.GRAM);
-        spinachBlanched = IIDGenerator.genIID("BlanchedSpinach", IngredientType.Veggie, CookState.STEAMED, CutState.WHOLE, IngredientUnit.GRAM);
-        chickenBaked = IIDGenerator.genIID("BakedChicken", IngredientType.Protein, CookState.BAKED, CutState.WHOLE, IngredientUnit.GRAM);
+        chicken = IIDGenerator.genIID("Chicken", IngredientType.PROTEIN, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
+        spinach = IIDGenerator.genIID("Spinach", IngredientType.VEGGIE, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
+        butter = IIDGenerator.genIID("Butter", IngredientType.FAT, IngredientUnit.MILLILITER);
+        mashedPotatoes = IIDGenerator.genIID("MashedPotatoes", IngredientType.VEGGIE, CookState.STEWED, CutState.GROUND, IngredientUnit.GRAM);
+        spinachBlanched = IIDGenerator.genIID("BlanchedSpinach", IngredientType.VEGGIE, CookState.STEAMED, CutState.WHOLE, IngredientUnit.GRAM);
+        chickenBaked = IIDGenerator.genIID("BakedChicken", IngredientType.PROTEIN, CookState.BAKED, CutState.WHOLE, IngredientUnit.GRAM);
         
 
         // String[] chickenIIDComponents = chicken.split("-");
@@ -39,25 +39,15 @@ public class Driver {
         System.out.println("Chicken unit: " + IIDParser.getUnitEnum(chicken));
 
         System.out.println("\nCook and Cut Tests");
-        RecipeBefore recipeBefore = new RecipeBefore(ingredients);
-        System.out.println("Sliced Chicken: " + recipeBefore.slice(chicken));
-        System.out.println("Baked Chicken: " + recipeBefore.bake("")); // error test
-        System.out.println("Julienned Butter: " + recipeBefore.julienne(chicken));
+        
+       
 
         // setIngredientQuantity tests
-        recipeBefore.setIngredientQuantity(chicken, 3);
-        recipeBefore.setIngredientQuantity(spinach, 50);
-        recipeBefore.setIngredientQuantity(butter, 0);
+  
 
-        unknownIngredient = recipeBefore.getIngredientQuantity("Sauce");
-        chickenQuantity = recipeBefore.getIngredientQuantity(chicken);
-        spinachQuantity = recipeBefore.getIngredientQuantity(spinach);
-        butterQuantity = recipeBefore.getIngredientQuantity(butter);
+       
 
-        System.out.println(unknownIngredient);
-        System.out.println(chickenQuantity);
-        System.out.println(spinachQuantity);
-        System.out.println(butterQuantity);
+
 
         // brads stuff
         String[] IIDComponentsIn = { CookState.RAW.getCookID(), "Chicken" };
