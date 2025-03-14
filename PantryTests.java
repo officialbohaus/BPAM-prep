@@ -18,20 +18,20 @@ public class PantryTests {
     // IIDGenerator Tests =========================================================
     @Test
     public void IID_A_Generated() {
-        String genIID_A = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM);
+        String genIID_A = IIDGenerator.genIID("Chicken", IngredientType.PROTEIN, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM);
         // assertTrue(genIID_A.equals(IID_A));
         assertEquals(IID_A, genIID_A);
     }
 
     @Test
     public void IID_B_Generated() {
-        String genIID_B = IIDGenerator.genIID("BakedApple", IngredientType.Fruit, CookState.BAKED, CutState.WHOLE, IngredientUnit.UNIT);
+        String genIID_B = IIDGenerator.genIID("BakedApple", IngredientType.FRUIT, CookState.BAKED, CutState.WHOLE, IngredientUnit.UNIT);
         assertEquals(IID_B, genIID_B);
     }
 
     @Test
     public void IID_C_Generated() {
-        String genIID_C = IIDGenerator.genIID("VanillaExtract", IngredientType.Spice, IngredientUnit.MILLILITER);
+        String genIID_C = IIDGenerator.genIID("VanillaExtract", IngredientType.SPICE, IngredientUnit.MILLILITER);
         assertEquals(IID_C, genIID_C);
     }
 

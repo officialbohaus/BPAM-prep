@@ -33,21 +33,28 @@ public class PantryNode {
 
 
      // Transaction Methods =======================================================================
-     //  TODO: prevent negative qty and invalid transactions. Throw exceptions.
+     
      public void removeQty() { removeQty(1); }
 
      public void removeQty(int quantity) {
+      if (quantity > this.quantity) { throw new IllegalArgumentException("Cannot remove " + quantity + " from " + this.quantity ); }
         this.quantity -= quantity;
-        // TODO throw error if removes too much
+        
      }
 
-     public void addQty() { addQty(1); }
+   public void addQty() { addQty(1); }
 
-     public void addQty(int quantity) {
-        this.quantity += quantity;
+   public void addQty(int quantity) {
+      if (quantity < 0) {
+         throw new IllegalArgumentException();
+      }
+      this.quantity += quantity;
      }
 
-     public void setQty(int quantity) { this.quantity = quantity; }
+   public void setQty(int quantity) { 
+      if (quantity < 0) { throw new IllegalArgumentException("Quantity cannot be < 0"); }
+      this.quantity = quantity; 
+   }
 
      // Query Methods ==============================================================================
      public boolean isIngredient(Ingredient ingredient) {
