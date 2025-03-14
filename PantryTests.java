@@ -47,6 +47,7 @@ public class PantryTests {
         return node;
     }
 
+    
     @Test
     public void pantryNodeBCreated() {
         assertNotNull(createPantryNodeB());
@@ -86,6 +87,11 @@ public class PantryTests {
     }
     private PantryNode createPantryNodeWithQuantity(String IID, int qty) {
         return new PantryNode(IID, qty);
+    }
+
+    @Test
+    public void testName() {
+        
     }
 
 }

@@ -4,7 +4,7 @@ public class PantryNode {
      */
 
      // TODO: bad practice to keep ingredient too? This may cause errors
-     private final Ingredient ingredient;
+     //private final Ingredient ingredient;
      private final String IID;
      private int quantity;
      //private final QuantityType qtyType;
@@ -15,9 +15,7 @@ public class PantryNode {
      }
 
      public PantryNode(Ingredient ingredient, int quantity) {
-        this.ingredient = ingredient;
-        this.IID = ingredient.getID();
-        this.quantity = quantity;
+        this(ingredient.getID(), quantity);
      }
 
      public PantryNode(String IID) {
@@ -25,7 +23,7 @@ public class PantryNode {
      }
 
      public PantryNode(String IID, int quantity) {
-         this.ingredient = null;
+         if (quantity < 0) { throw new IllegalArgumentException("Cannot create a PantryNode with quantity < 0"); }
          this.IID = IID;
          this.quantity = 0;
      }
