@@ -1,16 +1,15 @@
-import java.util.ArrayList;
-
-public enum CookState { //implements IIDComponent 
-    RAW("R"),
-    BAKED("Bak"),
-    FRIED("Fri"),
-    SAUTEED("Sau"),
-    GRILLED("Grl"),
-    ROASTED("Rst"),
-    SMOKED("Smk"),
-    STEWED("Stw"),
-    STEAMED("Ste"),
-    TOASTED("Tst"),
+public enum CookState {
+    RAW("RAW"),
+    BAKED("BAKE"),
+    FRIED("FRY"),
+    SAUTEED("SAUTE"),
+    GRILLED("GRILL"),
+    ROASTED("ROAST"),
+    SMOKED("SMOKE"),
+    STEWED("STEW"),
+    STEAMED("STEAM"),
+    TOASTED("TOAST"),
+    BOILED("BOIL"),
     NONE("N/A");
 
     private String cookID;
