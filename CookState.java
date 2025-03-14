@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public enum CookState { //implements IIDComponent 
     RAW("R"),
     BAKED("Bak"),
@@ -19,6 +21,15 @@ public enum CookState { //implements IIDComponent
 
     public String getCookID() {
         return cookID;
+    }
+
+    // TODO Fix encapsulation? I may or may not be breaking encapsulation rules
+    public static ArrayList<String> getCookStateArrayList() {
+        ArrayList<String> cookStateArrayList = new ArrayList<String>();
+        for (int i = 0; i < values().length; i++) {
+            cookStateArrayList.add(values()[i].toString());
+        }
+        return cookStateArrayList;
     }
 
     public static CookState fromCookID(String cookID) {
