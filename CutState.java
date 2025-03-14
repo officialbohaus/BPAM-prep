@@ -1,12 +1,12 @@
 public enum CutState {
-    WHOLE("Wh"),
-    SLICED("Sl"),
-    CHOPPED("Ch"),
-    DICED("Di"),
-    MINCED("Min"),
-    SHREDDED("Shr"),
-    GROUND("Grd"),
-    JULIENNED("Juli"),
+    WHOLE("WHOLE"),
+    SLICED("SLICE"),
+    CHOPPED("CHOP"),
+    DICED("DICE"),
+    MINCED("MINCE"),
+    SHREDDED("SHRED"),
+    GROUND("GROUND"),
+    JULIENNED("JULIENNE"),
     NONE("N/A");
 
     private String cutID;
