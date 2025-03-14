@@ -26,6 +26,7 @@ public class Step extends CookAndCutAndShit {
 
     public String doThis() {
         /* 
+         *  Pass in IID String
          *  must return IID 
          *  The name of the ingredient coming in must be in ingredientSet
 
