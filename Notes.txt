@@ -1,0 +1,10 @@
+Meeting 3/14/25
+- how do we denote two items that are altered states of eachother, other than trusting user to have valid name?
+e.g. baked chicken != raw chicken when comparing IIDs, however they are more equal than raw chicken and raw brocolli.
+
+- standardize IID format, parser, and IID related code into an IID class. 
+- change "component" to "tag", formalize IID definition? 
+- Exception throwing
+- organizing code
+- individual driver classes (branches?)
+- tag interface

@@ -1,5 +1,8 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.Test;
 
@@ -16,100 +19,73 @@ public class PantryTests {
     @Test
     void IID_A_Generated() {
         String genIID_A = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM);
-        assertTrue(genIID_A.compareTo(IID_A) == 0);
+        // assertTrue(genIID_A.equals(IID_A));
+        assertEquals(IID_A, genIID_A);
     }
 
     @Test
     void IID_B_Generated() {
-
+        String genIID_B = IIDGenerator.genIID("BakedApple", IngredientType.Fruit, CookState.BAKED, CutState.WHOLE, IngredientUnit.UNIT);
+        assertEquals(IID_B, genIID_B);
     }
 
     @Test
     void IID_C_Generated() {
-
+        String genIID_C = IIDGenerator.genIID("VanillaExtract", IngredientType.Spice, IngredientUnit.MILLILITER);
+        assertEquals(IID_C, genIID_C);
     }
 
     // PantryNode Tests ===========================================================
-    @Test
-    void pantryNodeACreated() {}
-    private PantryNode createPantryNodeA() {}
-
-    @Test
-    void pantryNodeBCreated() {}
-    private PantryNode createPantryNodeB() {}
-
-    @Test
-    void pantryNodeCCreated() {}
-    private PantryNode createPantryNodeC() {}
-
-    // @Test
-    // void addA_NodeA() {}
-    // private PantryNode addQtyOnNodeA() {}
-
-    @Test
-    void addQty100A_NodeA() {}
     
-
-    // PantryStorage Tests (cross-nodes) (TODO: replace node tests below!)
+    // TODO likely better ways to test creation more robustly?
     @Test
-    void addAtoNodeA() {}
-
-    @Test
-    void addAtoNodeB() {}
-
-    @Test
-    void addBtoNodeA() {}
-
-    @Test
-    void addBtoNodeB() {}
+    void pantryNodeACreated() {
+        assertNotNull(createPantryNodeA());
+    }
+    private PantryNode createPantryNodeA() {
+        PantryNode node = new PantryNode(IID_A);
+        return node;
+    }
 
     @Test
-    void addQtyAtoNodeA() {}
-
-    @Test 
-    void addQtyAtoNodeB() {}
-
-    @Test
-    void addQtyBtoNodeA() {}
-
-    @Test
-    void addQtyBtoNodeB() {}
+    void pantryNodeBCreated() {
+        assertNotNull(createPantryNodeB());
+    }
+    private PantryNode createPantryNodeB() {
+        PantryNode node = new PantryNode(IID_B);
+        return node;
+    }
 
     @Test
-    void addQty10BtoNodeB() {}
+    void pantryNodeCCreated() {
+        assertNotNull(createPantryNodeC());
+    }
+    private PantryNode createPantryNodeC() {
+        PantryNode node = new PantryNode(IID_C);
+        return node;
+    }
 
     @Test
-    void addQty100BtoNodeB() {}
-
-    @Test 
-    void addQty1000BtoNodeB() {}
-
-    @Test
-    void removeAfromNodeA() {}
+    void pantryNodeWithQuantityNeg1ThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            createPantryNodeWithQuantity(IID_A, -1);
+        });
+    }
 
     @Test
-    void removeAfromNodeB() {}
+    void pantryNodeWithQuantity0Created() {
+        // assertDoesNotThrow(() -> {
+        //     createPantryNodeWithQuantity(IID_A, 0);
+        // });
+        assertNotNull(createPantryNodeWithQuantity(IID_A, 0));
+    }
 
     @Test
-    void removeBfromNodeA() {}
-
-    @Test
-    void removeBfromNodeB() {}
-
-    @Test
-    void removeSomeQtyAfromNodeA() {}
-
-    @Test
-    void removeSomeQtyAfromNodeB() {}
-
-    @Test
-    void removeAllQtyAfromNodeA() {}
-
-    @Test
-    void removeMoreThanAllQtyAfromNodeA() {}
-
-    @Test
-    void setQty100AonNodeA() {}
-    
+    void pantryNodeWithQuantity1Created() {
+        assertNotNull(createPantryNodeWithQuantity(IID_A, 1));
+    }
+    private PantryNode createPantryNodeWithQuantity(String IID, int qty) {
+        return new PantryNode(IID, qty);
+    }
 
 }

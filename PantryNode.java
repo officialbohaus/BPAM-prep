@@ -20,6 +20,16 @@ public class PantryNode {
         this.quantity = quantity;
      }
 
+     public PantryNode(String IID) {
+         this(IID, 0);
+     }
+
+     public PantryNode(String IID, int quantity) {
+         this.ingredient = null;
+         this.IID = IID;
+         this.quantity = 0;
+     }
+
 
 
      // Transaction Methods =======================================================================
