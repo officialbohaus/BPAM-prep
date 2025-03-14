@@ -13,34 +13,29 @@ public class IIDParser {
     private static final int IID_LENGTH = 5;
     
     public static String getName(String IID) {
+        Guards.checkIID(IID);
+
         return getComponent(IID, NAME_INDEX);
     }
 
     public static String getID(String IID) {
+        Guards.checkIID(IID);
+
         return IID;
     }
 
     public static String getType(String IID) {
-        try {
-            Guards.checkIID(IID);
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception + ": " + IID);
-        }
-
+        Guards.checkIID(IID);
+        
         return getComponent(IID, TYPE_INDEX);
     }
 
     public static IngredientType getTypeEnum(String IID) {
-        try {
-            Guards.checkIID(IID);
-            
-            String type = getComponent(IID, TYPE_INDEX);
-            
-            return IngredientType.fromTypeID(type);
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception + ": " + IID);
-        }
-        return null;
+        Guards.checkIID(IID);
+        
+        String type = getComponent(IID, TYPE_INDEX);
+        
+        return IngredientType.fromTypeID(type);
     }
 
     public static String getCookState(String IID) {
@@ -48,17 +43,11 @@ public class IIDParser {
     } 
 
     public static CookState getCookStateEnum(String IID) {
-        try {
-            Guards.checkIID(IID);
-            
-            String type = getComponent(IID, COOK_INDEX);
-            
-            return CookState.fromCookID(type);
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception + ": " + IID);
-        }
-        return null;
-
+        Guards.checkIID(IID);
+        
+        String type = getComponent(IID, COOK_INDEX);
+        
+        return CookState.fromCookID(type);
     }
 
     public static String getCutState(String IID) {
@@ -66,16 +55,11 @@ public class IIDParser {
     }
 
     public static CutState getCutStateEnum(String IID) {
-        try {
-            Guards.checkIID(IID);
-            
-            String type = getComponent(IID, CUT_INDEX);
-            
-            return CutState.fromCutID(type);
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception + ": " + IID);
-        }
-        return null;        
+        Guards.checkIID(IID);
+        
+        String type = getComponent(IID, CUT_INDEX);
+        
+        return CutState.fromCutID(type);
     }
 
     public static String getUnit(String IID) {
@@ -83,16 +67,11 @@ public class IIDParser {
     }
 
     public static IngredientUnit getUnitEnum(String IID) {
-        try {
-            Guards.checkIID(IID);
-            
-            String type = getComponent(IID, UNIT_INDEX);
-            
-            return IngredientUnit.fromUnitID(type);
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception + ": " + IID);
-        }
-        return null;                
+        Guards.checkIID(IID);
+        
+        String type = getComponent(IID, UNIT_INDEX);
+        
+        return IngredientUnit.fromUnitID(type);
     }
 
     public static String getIID(String[] IIDComponents) {
@@ -105,14 +84,8 @@ public class IIDParser {
     }
 
     public static String[] parseIID(String IID) {
-        try {
-            IIDComponents = IID.split("-");
-            if (IIDComponents.length != IID_LENGTH) {
-                throw new InvalidIIDException();
-            } 
-        } catch (InvalidIIDException exception) {
-            System.out.println(exception);
-        }
+        Guards.checkIID(IID);
+        IIDComponents = IID.split("-");
         return IIDComponents;
     }
 
@@ -123,7 +96,6 @@ public class IIDParser {
         return IIDComponents[position];
         // TODO: has no error checking
     }
-
 }
 
     

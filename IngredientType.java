@@ -1,15 +1,15 @@
 public enum IngredientType {
-    Spice("Sp"),
-    Grain("Gr"),
-    Fruit("Fr"),
-    Veggie("Vg"),
-    Protein("Pr"),
-    Dairy("Dy"),
-    Baking("Bk"),
-    Sauce("Sc"),
-    Fat("Fat"),
-    Nut("Nut"),
-    Misc("Msc");
+    SPICE("SPICE"),
+    GRAIN("GRAIN"),
+    FRUIT("FRUIT"),
+    VEGGIE("VEGGIE"),
+    PROTEIN("PROTEIN"),
+    DAIRY("DAIRY"),
+    BAKING("BAKING"),
+    SAUCE("SAUCE"),
+    FAT("FAT"),
+    NUT("NUT"),
+    MISC("MISC");
     private String typeID;
     private IngredientType(String typeID) { this.typeID = typeID; }
     public String getTypeID() { return typeID; }

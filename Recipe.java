@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.management.RuntimeErrorException;
 
-public class Recipe extends RecipeStep implements RecipeInterface {
+public class Recipe implements RecipeInterface {
     /*
      * - The recipe class should take an ingredient set and pair each IID in the set
      * with a quantity value.
@@ -15,60 +18,98 @@ public class Recipe extends RecipeStep implements RecipeInterface {
      * 
      */
 
-    private IngredientSetInterface[] ingredients;
-    private String description, name;
+    private ArrayList<IngredientSetInterface> ingredients;
+    private ArrayList<String> ingredientString;
+    private ArrayList<Integer> ingredientQuantity;
+    // private IngredientSetInterface[] ingredients;
+    // private String[] inegredientString;
+    // private int[] ingredientQuantity;
+    // private String description, name;
 
     // TODO: Implement description and name
 
-    public Recipe(IngredientSetInterface[] ingredients) {
-        super(new String[ingredients.length], new int[ingredients.length]);
-        ingredients = new IngredientSetInterface[ingredients.length];
-        ingredientQuantity = new int[ingredients.length];
-        ingredientString = new String[ingredients.length];
+    public Recipe(IngredientSetInterface ingredients) {
+        this.ingredientString = new ArrayList<>();
+        this.ingredientString.addAll(ingredients.getIngredients());
 
-        for (int i = 0; i < ingredients.length; i++) {
-            this.ingredients[i] = ingredients[i];
-            ingredientString[i] = ingredients[i].toString();
-        }
+        ingredientQuantity = new ArrayList<>();
     }
 
-    public Recipe(String[] ingredientString) {
-        super(ingredientString, new int[ingredientString.length]);
-        ingredientString = new String[ingredientString.length];
-        ingredientQuantity = new int[ingredientString.length];
-        for (int i  = 0; i < ingredientString.length; i++) {
-            this.ingredientString[i] = ingredientString[i];
-        }
-    }
+    // public Recipe(ArrayList<String> ingredientString) {
+    //     this.ingredientString = new ArrayList<>();
+    //     this.ingredientString.addAll(ingredients);
 
-    public void setIngredientQuantity(String ingredientName, int quantity) {
-        for (int i = 0; i < ingredientString.length; i++) {
-            if (ingredientName.equalsIgnoreCase(ingredientString[i])) {
-                ingredientQuantity[i] = quantity;
+    //     ingredientQuantity = new ArrayList<>();
+    // }
+
+    // public Recipe(IngredientSetInterface[] ingredients) {
+    //     super(new String[ingredients.length], new int[ingredients.length]);
+    //     ingredients = new IngredientSetInterface[ingredients.length];
+    //     ingredientQuantity = new int[ingredients.length];
+    //     ingredientString = new String[ingredients.length];
+
+    //     for (int i = 0; i < ingredients.length; i++) {
+    //         this.ingredients[i] = ingredients[i];
+    //         ingredientString[i] = ingredients[i].toString();
+    //     }
+    // }
+
+    // public Recipe(String[] ingredientString) {
+    //     super(ingredientString, new int[ingredientString.length]);
+    //     ingredientString = new String[ingredientString.length];
+    //     ingredientQuantity = new int[ingredientString.length];
+    //     for (int i  = 0; i < ingredientString.length; i++) {
+    //         this.ingredientString[i] = ingredientString[i];
+    //     }
+    // }
+
+    // public void setIngredientQuantity(String ingredientName, int quantity) {
+    //     for (int i = 0; i < ingredientString.length; i++) {
+    //         if (ingredientName.equalsIgnoreCase(ingredientString[i])) {
+    //             ingredientQuantity[i] = quantity;
+    //         }
+    //     }
+    // }
+
+    public void setIngredientQuantity(String IID, int quantity) {
+        for (int i = 0; i < ingredientString.size(); i++) {
+            // Use iterator
+            // Pass in IID
+            if (ingredientName.equalsIgnoreCase(ingredientString.get(i))){
+                ingredientQuantity.set(i, quantity);
             }
         }
     }
 
     // TODO: Duplicate arrays for encapsulation
-    public int getIngredientQuantity(String ingredientName) {
-        try {
-            if (ingredientString.length != ingredientQuantity.length) {
-                throw new IncompatibleArraysException("Incompatible arrays");
-            }
+    // public int getIngredientQuantity(String ingredientName) {
+    //     try {
+    //         if (ingredientString.length != ingredientQuantity.length) {
+    //             throw new IncompatibleArraysException("Incompatible arrays");
+    //         }
 
-            for (int i = 0; i < ingredientString.length; i++) {
-                if (ingredientString[i].equalsIgnoreCase(ingredientName)) {
-                    return ingredientQuantity[i];
-                }
-            }
+    //         for (int i = 0; i < ingredientString.length; i++) {
+    //             if (ingredientString[i].equalsIgnoreCase(ingredientName)) {
+    //                 return ingredientQuantity[i];
+    //             }
+    //         }
 
-        } catch (IncompatibleArraysException exception) {
-            System.out.println(exception);
-        } catch (RuntimeException exception) {
-            System.out.println("Wrong name?");
+    //     } catch (IncompatibleArraysException exception) {
+    //         System.out.println(exception);
+    //     } catch (RuntimeException exception) {
+    //         System.out.println("Wrong name?");
+    //     }
+    //     return -1;
+    // }
+
+    public int getIngredientQuantity(String IID) {
+        // Use IID, not ingredientName
+        for (int i = 0; i < ingredientString.size(); i++) {
+            if (ingredientName.equalsIgnoreCase(ingredientString.get(i))) {
+                return ingredientQuantity.get(i);
+            }
         }
-
-        return -1;
+        throw new InvalidNameException();
     }
 
     @Override

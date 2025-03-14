@@ -1,7 +1,7 @@
-public class RecipeBefore extends RecipeStep implements RecipeInterface {
+public class RecipeBefore extends CookAndCutAndShit implements RecipeInterface {
 // TODO: Duplicate arrays for encapsulation
     
-        public RecipeBefore(String[] ingredientString) {
+    public RecipeBefore(String[] ingredientString) {
         super(ingredientString, new int[ingredientString.length]);
     }
 
