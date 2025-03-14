@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class IngredientSet implements IngredientInterface{
+public class IngredientSet implements IngredientSetInterface, Iterable<String> {
     /*
      * The IngredientSet represents a collection of ingredients.
      * - This class is intended to be used to group IIDs together as needed by user (we are the users).
@@ -28,45 +29,125 @@ public class IngredientSet implements IngredientInterface{
      *  -- all with optional description counterpart (6 constructors total)
      */
 
-    private ArrayList ingredients;
+    private ArrayList<String> ingredients;
+    private String description;
     
     public IngredientSet() {
-
+        this("", (String[]) null);
     }
 
-    public IngredientSet(String description) {
+    // public IngredientSet(String description) {
+    //     this("", (String[]) null);
+    // }
 
+    // public IngredientSet(String... IIDs) {
+    //     this("", IIDs);
+    // }
+
+    public IngredientSet(String description, String... IIDs) {
+        this.description = description;
+        for (String IID : IIDs) {
+            ingredients.add(IID);
+        }
     }
 
-    public IngredientSet(String... IID) {
+    public void addIID(String IID) {
+        if (!contains(IID)) {
+            ingredients.add(IID);
+        } else {
+            // TODO: Throw exception
+        }
+    }
+
+    @Override
+    public ArrayList<String> getIngredients() { return new ArrayList<String>(ingredients); }
+
+    @Override
+    public String getDescription() { return description; }
+
+    @Override
+    public ArrayList<String> compare(IngredientSet otherSet) {
+        // this will be the string list that holds each difference
+        ArrayList<String> differenceList = new ArrayList<String>();
+
+        // loop through each IID in our ingredient set
+        for (String thisIID : ingredients) {
+
+            // get iterator for passed ingredient set (allows us to loop through the values in it)
+            Iterator<String> otherSetIterator = otherSet.iterator();
+
+            // end cases for loop
+            boolean foundIID = false;
+            boolean partialMatch = false;
+
+            // loop while we have more IIDs in otherSet, and we haven't found a full or partial match
+            while(otherSetIterator.hasNext() && !foundIID && !partialMatch) {
+                String otherIID = otherSetIterator.next();
+                if (thisIID.equals(otherIID)) {
+                    // if we find an exact match
+                    foundIID = true;
+                } else {
+                    // test if we match on name, but some IID component is different
+                    String otherName = IIDParser.getName(otherIID);
+                    String thisName = IIDParser.getName(thisIID);
+                    if (otherName.equals(thisName)) {
+                        partialMatch = true;
+                        differenceList.add(
+                            otherIID + " --> " + thisIID
+                        );
+                    }
+                }
+            }
+            if (!foundIID && !partialMatch) {
+                // we didn't find any match, we know other set did not contain this IID at all
+                differenceList.add(
+                "NONE" + " --> " + thisIID
+                );
+            }
+        }
+        return differenceList;
+    }
+
+    @Override
+    public boolean contains(String IID) {
+        for (String ingredient : ingredients) {
+            if (ingredient.equals(IID)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+            return ingredients.iterator();
+            // TODO should probably be more checks in place before straight sending this through
         
     }
 
-    public IngredientSet(String description, String... IID) {
-        
-    }
 
-    @Override
-    public String getID() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getID'");
-    }
 
-    @Override
-    public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
-    }
+    // @Override
+    // public String getID() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'getID'");
+    // }
 
-    @Override
-    public IngredientType getType() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
-    }
+    // @Override
+    // public String getName() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'getName'");
+    // }
 
-    @Override
-    public boolean isEqual(Ingredient ingredient) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEqual'");
-    }
+    // @Override
+    // public IngredientType getType() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'getType'");
+    // }
+
+    // @Override
+    // public boolean isEqual(Ingredient ingredient) {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'isEqual'");
+    // }
 }

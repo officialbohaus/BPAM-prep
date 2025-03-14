@@ -7,5 +7,7 @@ public interface IngredientSetInterface {
     public String getDescription();
 
     public ArrayList<String> compare(IngredientSet otherSet);
+
+    public boolean contains(String IID);
     
 }

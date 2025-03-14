@@ -14,7 +14,7 @@ public class IIDGenerator {
      // the IID_TEMPLATE is used to ensure a standardized arrangement of IID components (i.e. name, cookstate, etc)
      // this ensures our parser works correctly. Do not deviate from the form below!
      // TODO: Error checking not yet implemented for invalid IID forms
-    private static final String IID_TEMPLATE = "NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:";
+    private static final String IID_TEMPLATE = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
     private static final String NOT_APPLICABLE_CHAR = "N/A"; 
 
     public static String genIID(IngredientType type, String name) {
@@ -22,9 +22,20 @@ public class IIDGenerator {
         return genIID(name, type, CookState.NONE, CutState.NONE, IngredientUnit.UNIT);
     }
 
+    public static String genIID(String name, IngredientType type, IngredientUnit unit) {
+        return genIID(name, type, CookState.NONE, CutState.NONE, unit);
+    }
+
     // This generates an IID string matching the template above. 
     // TODO: create an actual template with String class methods (such as format) instead of relying on valid order of input.
     public static String genIID(String itemName, IngredientType type, CookState cookState, CutState cutState, IngredientUnit unit) {
-        return itemName + "-" + type.getTypeID() + "-" + cookState.getCookID() + "-" + cutState.getCutID() + "-" + unit.getunitID();
+        return 
+        "#" + 
+        "NAME:"+ itemName + "-" +
+        "INGREDIENTTYPE:" + type.getTypeID() + "-" + 
+        "COOKSTATE:" + cookState.getCookID() + "-" + 
+        "CUTSTATE:" + cutState.getCutID() + "-" + 
+        "UNIT:" + unit.getunitID() +
+        "#";
     }
 }
