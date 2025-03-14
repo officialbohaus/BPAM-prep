@@ -11,9 +11,9 @@ public class PantryTests {
     // TODO: populate with unique IIDs once class is ready
 
     // Shouldn't be generated here, rather should be the correct string. We test generation later.
-    private final String IID_A = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
-    private final String IID_B = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
-    private final String IID_C = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
+    private final String IID_A = "#NAME:Chicken-INGREDIENTTYPE:PROTEIN-COOKSTATE:BAKE-CUTSTATE:CHOP-UNIT:g#";
+    private final String IID_B = "#NAME:BakedApple-INGREDIENTTYPE:FRUIT-COOKSTATE:BAKE-CUTSTATE:WHOLE-UNIT:Ut#";
+    private final String IID_C = "#NAME:VanillaExtract-INGREDIENTTYPE:SPICE-COOKSTATE:N/A-CUTSTATE:N/A-UNIT:mL#";
 
     // IIDGenerator Tests =========================================================
     @Test

@@ -14,7 +14,7 @@ public class IIDGenerator {
      // the IID_TEMPLATE is used to ensure a standardized arrangement of IID components (i.e. name, cookstate, etc)
      // this ensures our parser works correctly. Do not deviate from the form below!
      // TODO: Error checking not yet implemented for invalid IID forms
-    private static final String IID_TEMPLATE = "#NAME:-INGREDIENTTYPE:-COOKSTATE:-CUTSTATE:-INGREDIENTUNIT:#";
+    private static final String IID_TEMPLATE = "#NAME:...-BASE:...-DESCRIPTOR:...-INGREDIENTTYPE:...-COOKSTATE:...-CUTSTATE:...-INGREDIENTUNIT:...#";
     private static final String NOT_APPLICABLE_CHAR = "N/A"; 
 
     public static String genIID(IngredientType type, String name) {
@@ -32,7 +32,9 @@ public class IIDGenerator {
         return 
         "#" + 
         "NAME:"+ itemName + "-" +
-        "INGREDIENTTYPE:" + type.getTypeID() + "-" + 
+        "BASE: " + "[BASE]" + "-" + 
+        "DESCRIPTOR: " + "[DESCRIPTOR]" + "-" +
+        "INGREDIENTTYPE: " + type.getTypeID() + "-" + 
         "COOKSTATE:" + cookState.getCookID() + "-" + 
         "CUTSTATE:" + cutState.getCutID() + "-" + 
         "UNIT:" + unit.getunitID() +
