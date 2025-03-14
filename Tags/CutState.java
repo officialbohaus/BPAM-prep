@@ -1,3 +1,4 @@
+package Tags;
 public enum CutState {
     WHOLE("WHOLE"),
     SLICED("SLICE"),
