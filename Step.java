@@ -13,11 +13,11 @@ public class Step {
         this.IIDComponentsOut = Arrays.copyOf(IIDComponentsOut, IIDComponentsOut.length);
     }
 
-    public String do(String IID) {
-        // convert IID components to state of IID after step is done(components out)
-    }
+    // public String do(String IID) {
+    //     // convert IID components to state of IID after step is done(components out)
+    // }
 
-    private boolean hasComponents(String IID) {
-        // confirm we have the correct compponents of IID
-    }
+    // private boolean hasComponents(String IID) {
+    //     // confirm we have the correct compponents of IID
+    // }
 }

@@ -17,20 +17,20 @@ public class PantryTests {
 
     // IIDGenerator Tests =========================================================
     @Test
-    void IID_A_Generated() {
+    public void IID_A_Generated() {
         String genIID_A = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.BAKED, CutState.CHOPPED, IngredientUnit.GRAM);
         // assertTrue(genIID_A.equals(IID_A));
         assertEquals(IID_A, genIID_A);
     }
 
     @Test
-    void IID_B_Generated() {
+    public void IID_B_Generated() {
         String genIID_B = IIDGenerator.genIID("BakedApple", IngredientType.Fruit, CookState.BAKED, CutState.WHOLE, IngredientUnit.UNIT);
         assertEquals(IID_B, genIID_B);
     }
 
     @Test
-    void IID_C_Generated() {
+    public void IID_C_Generated() {
         String genIID_C = IIDGenerator.genIID("VanillaExtract", IngredientType.Spice, IngredientUnit.MILLILITER);
         assertEquals(IID_C, genIID_C);
     }
@@ -39,7 +39,7 @@ public class PantryTests {
     
     // TODO likely better ways to test creation more robustly?
     @Test
-    void pantryNodeACreated() {
+    public void pantryNodeACreated() {
         assertNotNull(createPantryNodeA());
     }
     private PantryNode createPantryNodeA() {
@@ -48,7 +48,7 @@ public class PantryTests {
     }
 
     @Test
-    void pantryNodeBCreated() {
+    public void pantryNodeBCreated() {
         assertNotNull(createPantryNodeB());
     }
     private PantryNode createPantryNodeB() {
@@ -57,7 +57,7 @@ public class PantryTests {
     }
 
     @Test
-    void pantryNodeCCreated() {
+    public void pantryNodeCCreated() {
         assertNotNull(createPantryNodeC());
     }
     private PantryNode createPantryNodeC() {
@@ -66,14 +66,14 @@ public class PantryTests {
     }
 
     @Test
-    void pantryNodeWithQuantityNeg1ThrowsException() {
+    public void pantryNodeWithQuantityNeg1ThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> {
             createPantryNodeWithQuantity(IID_A, -1);
         });
     }
 
     @Test
-    void pantryNodeWithQuantity0Created() {
+    public void pantryNodeWithQuantity0Created() {
         // assertDoesNotThrow(() -> {
         //     createPantryNodeWithQuantity(IID_A, 0);
         // });
@@ -81,7 +81,7 @@ public class PantryTests {
     }
 
     @Test
-    void pantryNodeWithQuantity1Created() {
+    public void pantryNodeWithQuantity1Created() {
         assertNotNull(createPantryNodeWithQuantity(IID_A, 1));
     }
     private PantryNode createPantryNodeWithQuantity(String IID, int qty) {
