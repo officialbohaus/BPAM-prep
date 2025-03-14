@@ -33,16 +33,16 @@ public class IngredientSet implements IngredientSetInterface, Iterable<String> {
     private String description;
     
     public IngredientSet() {
-        this("");
-    }
-
-    public IngredientSet(String description) {
         this("", (String[]) null);
     }
 
-    public IngredientSet(String... IIDs) {
-        this("", IIDs);
-    }
+    // public IngredientSet(String description) {
+    //     this("", (String[]) null);
+    // }
+
+    // public IngredientSet(String... IIDs) {
+    //     this("", IIDs);
+    // }
 
     public IngredientSet(String description, String... IIDs) {
         this.description = description;

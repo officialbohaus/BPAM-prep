@@ -4,14 +4,18 @@ public class Driver {
         Ingredient sugar = new Ingredient("Sugar", 0, IngredientType.Baking, "n.a");
         String[] ingredients; 
         int[] ingredientQuantity;
-        String chicken, spinach, butter;
+        String chicken, spinach, butter, chickenBaked, spinachBlanched, mashedPotatoes;
         int chickenQuantity, spinachQuantity, butterQuantity, unknownIngredient;
 
         ingredients = new String[3];
 
-        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.RAW, CutState.GROUND, IngredientUnit.GRAM);
-        spinach = IIDGenerator.genIID("Spinach", IngredientType.Fat, CookState.SAUTEED, CutState.CHOPPED, IngredientUnit.MILLILITER);
+        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
+        spinach = IIDGenerator.genIID("Spinach", IngredientType.Veggie, CookState.RAW, CutState.WHOLE, IngredientUnit.GRAM);
         butter = IIDGenerator.genIID("Butter", IngredientType.Fat, IngredientUnit.MILLILITER);
+        mashedPotatoes = IIDGenerator.genIID("MashedPotatoes", IngredientType.Veggie, CookState.STEWED, CutState.GROUND, IngredientUnit.GRAM);
+        spinachBlanched = IIDGenerator.genIID("BlanchedSpinach", IngredientType.Veggie, CookState.STEAMED, CutState.WHOLE, IngredientUnit.GRAM);
+        chickenBaked = IIDGenerator.genIID("BakedChicken", IngredientType.Protein, CookState.BAKED, CutState.WHOLE, IngredientUnit.GRAM);
+        
 
         // String[] chickenIIDComponents = chicken.split("-");
 
@@ -60,6 +64,12 @@ public class Driver {
         String IIDComponentOut = CookState.ROASTED.getCookID();
         Step roastChicken = new Step("Roast the chicken",  IIDComponentsIn, IIDComponentOut);
 
-        String roastChickenIID = roastChicken.do(chicken);
+        IngredientSet setA = new IngredientSet("setA", chicken, spinach, butter);
+        IngredientSet setB = new IngredientSet("setB", chickenBaked, spinachBlanched, butter, mashedPotatoes);
+
+        System.out.println(setA.compare(setB));
+        System.out.println(setB.compare(setA));
+
+        //chicken = roastChicken.do(chicken);
     }
 }
