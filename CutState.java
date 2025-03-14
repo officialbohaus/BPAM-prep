@@ -8,6 +8,7 @@ public enum CutState {
     GROUND("GROUND"),
     JULIENNED("JULIENNE"),
     NONE("N/A");
+    // blended items
 
     private String cutID;
 

@@ -6,11 +6,13 @@ public class IIDParser {
     static final String IID_ORDER = "name-ingtype-cook-cut-unit";
     private static String[] IIDTags;
     private static final int NAME_INDEX = 0;
-    private static final int TYPE_INDEX = 1;
-    private static final int COOK_INDEX = 2;
-    private static final int CUT_INDEX = 3;
-    private static final int UNIT_INDEX = 4;
-    private static final int IID_LENGTH = 5;
+    private static final int BASE_INDEX = 1;
+    private static final int DESCRIPTOR_INDEX = 2;
+    private static final int TYPE_INDEX = 3;
+    private static final int COOK_INDEX = 4;
+    private static final int CUT_INDEX = 5;
+    private static final int UNIT_INDEX = 6;
+    private static final int IID_LENGTH = 7;
     
     public static String getName(String IID) {
         Guards.checkIID(IID);
@@ -18,10 +20,16 @@ public class IIDParser {
         return getTags(IID, NAME_INDEX);
     }
 
-    public static String getID(String IID) {
+    public static String getBase(String IID) {
         Guards.checkIID(IID);
 
-        return IID;
+        return getTags(IID, BASE_INDEX);
+    }
+
+    public static String getDescriptor(String IID) {
+        Guards.checkIID(IID);
+
+        return getTags(IID, DESCRIPTOR_INDEX);
     }
 
     public static String getType(String IID) {

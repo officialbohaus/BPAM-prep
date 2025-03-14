@@ -106,9 +106,20 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
         return newIID;
     }
 
+    public String boil(String IID) {
+        Guards.checkIID(IID);
+
+        IIDComponents =  IIDParser.parseIID(IID);
+        IIDComponents[COOK_INDEX] = CookState.BOILED.getCookID();
+        newIID = IIDParser.getIID(IIDComponents);
+        return newIID;
+    }
+
     public String cook(String IID) {
         CookState cookState = IIDParser.getCookStateEnum(IID);
         switch(cookState) {
+            case RAW:
+                return "THIS SHOULDN'T BE RAW.";
             case BAKED:
                 bake(IID);
                 break;
@@ -135,6 +146,11 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
             case TOASTED:
                 toast(IID);
                 break;
+            case BOILED:
+                boil(IID);
+                break;
+            case NONE:
+                return "THIS SHOULDN'T BE NONE.";
         }
         return "ENUM NOT FOUND";
     }
@@ -212,6 +228,8 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
     public String cut(String IID) {
         CutState cutState = IIDParser.getCutStateEnum(IID);
         switch (cutState) {
+            case WHOLE: 
+                return "THIS SHOULDN'T BE WHOLE.";
             case SLICED:
                 slice(IID);
                 break;
@@ -233,6 +251,8 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
             case JULIENNED:
                 julienne(IID);
                 break; 
+            case NONE:
+                return "THIS SHOULDN'T BE NONE.";
         }
         return "ENUM NOT FOUND";
     }
