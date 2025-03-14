@@ -1,4 +1,4 @@
-public enum CookState {
+public enum CookState { //implements IIDComponent 
     RAW("R"),
     BAKED("Bak"),
     FRIED("Fri"),
@@ -29,4 +29,15 @@ public enum CookState {
         }
         throw new IllegalArgumentException("No enum constant with abbreviation: " + cookID);
     }
+
+    // @Override
+    // public Class<> getTypeEnum() {
+    //     return CookState.clwass;
+    // }
+
+    // @Override
+    // public String getComponentText() {
+    //     // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'getComponentText'");
+    // }
 }

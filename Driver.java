@@ -9,7 +9,7 @@ public class Driver {
 
         ingredients = new String[3];
 
-        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.ROASTED, CutState.GROUND, IngredientUnit.GRAM);
+        chicken = IIDGenerator.genIID("Chicken", IngredientType.Protein, CookState.RAW, CutState.GROUND, IngredientUnit.GRAM);
         spinach = IIDGenerator.genIID("Spinach", IngredientType.Fat, CookState.SAUTEED, CutState.CHOPPED, IngredientUnit.MILLILITER);
         butter = IIDGenerator.genIID("Butter", IngredientType.Fat, IngredientUnit.MILLILITER);
 
@@ -54,5 +54,12 @@ public class Driver {
         System.out.println(chickenQuantity);
         System.out.println(spinachQuantity);
         System.out.println(butterQuantity);
+
+        // brads stuff
+        String[] IIDComponentsIn = { CookState.RAW.getCookID(), "Chicken" };
+        String IIDComponentOut = CookState.ROASTED.getCookID();
+        Step roastChicken = new Step("Roast the chicken",  IIDComponentsIn, IIDComponentOut);
+
+        String roastChickenIID = roastChicken.do(chicken);
     }
 }
