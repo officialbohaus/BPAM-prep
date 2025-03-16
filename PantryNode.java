@@ -25,7 +25,7 @@ public class PantryNode {
      public PantryNode(String IID, int quantity) {
          if (quantity < 0) { throw new IllegalArgumentException("Cannot create a PantryNode with quantity < 0"); }
          this.IID = IID;
-         this.quantity = 0;
+         this.quantity = quantity;
      }
 
 
