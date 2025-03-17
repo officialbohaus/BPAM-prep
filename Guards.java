@@ -1,8 +1,10 @@
 import java.util.Arrays;
 import java.util.List;
 
+import Tags.CutState;
+
 public class Guards {
-    private static final int IID_LENGTH = 5; // TODO remember to change this if we change IID!
+    private static final int IID_LENGTH = 8; // TODO remember to change this if we change IID!
     private static List<String> list;
     
     public static void checkIID(String IID) {

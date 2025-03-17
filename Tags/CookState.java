@@ -1,3 +1,4 @@
+package Tags;
 import java.util.ArrayList;
 
 public enum CookState {

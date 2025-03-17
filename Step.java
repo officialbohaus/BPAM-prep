@@ -1,26 +1,29 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Step extends CookAndCutAndShit {
     
     private String description;
-    private String[] IIDComponentsIn;
+    private String[] criticalTags;
     private String IIDComponentsOut;
     private ArrayList<String> ingredientSet;
-    private final int MIN_IID_COMPONENTS_IN_LENGTH = 2;
+    private final int MIN_IID_COMPONENTS_IN_LENGTH = 1;
     private final int MAX_IID_COMPONENTS_IN_LENGTH = 3;
 
-    public Step(String description, String[] IIDComponentsIn, String IIDComponentsOut) {
-        this.description = description;
-        this.IIDComponentsIn = Arrays.copyOf(IIDComponentsIn, IIDComponentsIn.length);
+    // String[] criticalTags
+    public Step(String description, String[] criticalTags, String IIDTagsOut) {
+        this(description, criticalTags, IIDTagsOut, null);
     }
+    
 
-    public Step(String description, String[] IIDComponentsIn, String IIDComponentsOut, IngredientSetInterface ingredientSet){
+    public Step(String description, String[] criticalTags, String IIDTagsOut, IngredientSetInterface ingredientSet){
         /*
          * IIDComponentsIn cannot be empty
          * The component that is going in must be an existing component in the ingredient set
          */
-        this.IIDComponentsIn = Arrays.copyOf(IIDComponentsIn, IIDComponentsIn.length);
+        this.description = description;
+        this.criticalTags = Arrays.copyOf(criticalTags, criticalTags.length);
         this.ingredientSet.addAll(ingredientSet.getIngredients());
     }
 
@@ -44,38 +47,25 @@ public class Step extends CookAndCutAndShit {
         return "";
     }
 
-    private boolean hasComponents(String IID) {
+    private boolean hasTags(String IID) {
         // confirm we have the correct compponents of IID
-
+        // if the IID contains all of criticalTags, method return true
+        List<String> IIDTags = Arrays.asList(IIDParser.parseIID(IID));
+        if (IIDTags.containsAll(Arrays.asList(criticalTags))) {
             return true;
-    }
-
-    private boolean checkIIDComponentsIn(String[] IIDComponentsIn) {
-        if (IIDComponentsIn.length < MIN_IID_COMPONENTS_IN_LENGTH && IIDComponentsIn.length > MAX_IID_COMPONENTS_IN_LENGTH) { throw new InvalidIIDException(); }
-        boolean isValidName, isValidCutState, isValidCookState;
-        isValidName = isValidCutState = isValidCookState = false;
-        int length = IIDComponentsIn.length;
-        switch (length) {
-            case 2: 
-                for (int i = 0; i < ingredientSet.size(); i++) {
-                    String[] IIDComponents = ingredientSet.get(i).split("-");
-                    if (IIDComponents[0].equalsIgnoreCase(IIDComponentsIn[0])) {
-                        isValidName = true;
-                    }
-                }
-                if (!isValidName) { throw new InvalidIIDException(); }
-                break;
-            case 3:
-                break;
-            default:
-                break;
         }
-        return false; 
+        return false;
     }
 
-    private int getIIDComponentsInLength(String[] IIDComponentsIn) {
-        if (!checkIIDComponentsIn(IIDComponentsIn)) { throw new InvalidIIDException(); }
-        return IIDComponentsIn.length;
+    private boolean checkTagsIn(String[] IIDTagsIn) {
+        if (IIDTagsIn.length < MIN_IID_COMPONENTS_IN_LENGTH) { throw new InvalidIIDException(); }
+        ArrayList<String> listOfTags;
+
+        return true; // Added for testing
+    }
+
+    private int getIIDComponentsInLength(String IID) {
+        return -1; // Added for testing
     }
 }
 

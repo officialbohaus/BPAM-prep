@@ -7,4 +7,5 @@ public interface CookInterface {
     public String stew(String IID);
     public String steam(String IID);
     public String toast(String IID);
+    public String boil(String IID);
 }

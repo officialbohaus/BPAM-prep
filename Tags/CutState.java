@@ -1,3 +1,4 @@
+package Tags;
 public enum CutState {
     WHOLE("WHOLE"),
     SLICED("SLICE"),
@@ -8,6 +9,7 @@ public enum CutState {
     GROUND("GROUND"),
     JULIENNED("JULIENNE"),
     NONE("N/A");
+    // blended items
 
     private String cutID;
 
