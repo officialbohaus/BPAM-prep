@@ -1,5 +1,5 @@
 package Tags;
-public enum CutState {
+public enum CutState implements IIDTag{
     WHOLE("WHOLE"),
     SLICED("SLICE"),
     CHOPPED("CHOP"),
@@ -36,6 +36,18 @@ public enum CutState {
             }
         }
         throw new IllegalArgumentException("No enum constant with abbreviation: " + cutID);
+    }
+
+    @Override
+    public Class<IIDTag> getTypeTag() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTypeTag'");
+    }
+
+    @Override
+    public String getTagText() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTagText'");
     }
 
 }

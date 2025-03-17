@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
+import Tags.CookState;
 import Tags.CutState;
 
 public class Guards {
@@ -12,6 +13,10 @@ public class Guards {
         if (IIDComponents.length != IID_LENGTH) {
             throw new InvalidIIDException();
         }
+
+        checkCutEnum(IID);
+        checkTypeEnum(IID);
+        checkCookEnum(IID);
     }
 
     public static void checkCutEnum(String IID) {
@@ -30,6 +35,9 @@ public class Guards {
     }
 
     public static void checkCookEnum(String IID) {
-
+        list = Arrays.asList(CookState.getCookIDString());
+        if (!list.contains(IIDParser.getCookState(IID))) {
+            throw new InvalidIIDException(); 
+        }
     }
 }

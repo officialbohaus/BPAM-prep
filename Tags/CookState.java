@@ -1,7 +1,7 @@
 package Tags;
 import java.util.ArrayList;
 
-public enum CookState {
+public enum CookState implements IIDTag {
     RAW("RAW"),
     BAKED("BAKE"),
     FRIED("FRY"),
@@ -34,6 +34,14 @@ public enum CookState {
         return cookStateArrayList;
     }
     
+    public static String[] getCookIDString() {
+        String[] cookIDString = new String[values().length];
+        for (int i = 0; i < values().length; i++) {
+            cookIDString[i] = values()[i].toString();
+        }
+        return cookIDString;
+    }
+    
     public static CookState fromCookID(String cookID) {
         for (CookState cookState : values()) {
             if (cookState.cookID.equalsIgnoreCase(cookID)) {
@@ -41,6 +49,18 @@ public enum CookState {
             }
         }
         throw new IllegalArgumentException("No enum constant with abbreviation: " + cookID);
+    }
+
+    @Override
+    public Class<IIDTag> getTypeTag() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTypeTag'");
+    }
+
+    @Override
+    public String getTagText() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTagText'");
     }
 
     // @Override
