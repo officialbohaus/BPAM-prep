@@ -17,17 +17,13 @@ public class Step extends CookAndCutAndShit {
     private final int MIN_IID_COMPONENTS_IN_LENGTH = 1;
     // private final int MAX_IID_COMPONENTS_IN_LENGTH = 3;
 
-    // String[] criticalTags
-    // public Step(String description, String[] criticalTags, String IIDTagOut) {
-    //     this(description, criticalTags, IIDTagOut, null);
-    // }
     
     public Step(String description, String name) {
         this(description, name, null);
     }
     
     public Step(String description, String name, IIDTag IIDTagOut) {
-        this (description, name, null, IIDTagOut);
+        this(description, name, null, IIDTagOut);
     }
 
     public Step(String description, String name, IIDTag[] tags, IIDTag IIDTagOut) {
@@ -59,7 +55,13 @@ public class Step extends CookAndCutAndShit {
      *  Use the cook() and cut() methods as needed
      */
     public String doThis(String IID) {
-        return "";
+        if (Arrays.asList(CookState.values()).contains(IIDTagOut)) {
+            return cook(IID, IIDTagOut);
+        } else if (Arrays.asList(CutState.values()).contains(IIDTagOut)) {
+            return cut(IID, IIDTagOut);
+        } else {
+            throw new InvalidIIDException();
+        }
     }
 
     private boolean hasTags(String IID) {

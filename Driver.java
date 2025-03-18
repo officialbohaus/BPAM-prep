@@ -1,5 +1,6 @@
 import Tags.CookState;
 import Tags.CutState;
+import Tags.IIDTag;
 
 public class Driver {
     public static void main(String[] args) {
@@ -55,7 +56,7 @@ public class Driver {
         // brads stuff
         String[] IIDComponentsIn = { CookState.RAW.getCookID(), "Chicken" };
         String IIDComponentOut = CookState.ROASTED.getCookID();
-        Step roastChicken = new Step("Roast the chicken",  IIDComponentsIn, IIDComponentOut);
+        Step roastChicken = new Step("Roast chicken", "chicken", new IIDTag[]{CookState.RAW, CutState.WHOLE}, CookState.ROASTED);
 
         IngredientSet setA = new IngredientSet("setA", chicken, spinach, butter);
         IngredientSet setB = new IngredientSet("setB", chickenBaked, spinachBlanched, butter, mashedPotatoes);

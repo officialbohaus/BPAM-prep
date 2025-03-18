@@ -1,5 +1,6 @@
 import Tags.CookState;
 import Tags.CutState;
+import Tags.IIDTag;
 
 public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
 
@@ -118,42 +119,44 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
         return newIID;
     }
 
-    public String cook(String IID) {
-        CookState cookState = IIDParser.getCookStateEnum(IID);
+    public String cook(String IID, IIDTag cookState) {
         switch(cookState) {
-            case RAW:
+            case CookState.RAW:
                 return "THIS SHOULDN'T BE RAW.";
-            case BAKED:
+            case CookState.BAKED:
                 bake(IID);
                 break;
-            case FRIED:
+            case CookState.FRIED:
                 fry(IID);
                 break;
-            case SAUTEED:
+            case CookState.SAUTEED:
+                sautee(IID);
                 break;
-            case GRILLED:
+            case CookState.GRILLED:
                 grill(IID);
                 break;
-            case ROASTED:
+            case CookState.ROASTED:
                 roast(IID);
                 break;
-            case SMOKED:
+            case CookState.SMOKED:
                 smoke(IID);
                 break;
-            case STEWED:
+            case CookState.STEWED:
                 stew(IID);
                 break;
-            case STEAMED:
+            case CookState.STEAMED:
                 steam(IID);
                 break;
-            case TOASTED:
+            case CookState.TOASTED:
                 toast(IID);
                 break;
-            case BOILED:
+            case CookState.BOILED:
                 boil(IID);
                 break;
-            case NONE:
+            case CookState.NONE:
                 return "THIS SHOULDN'T BE NONE.";
+            default:
+                return "THIS SHOULDN'T GET HERE.";
         }
         return "ENUM NOT FOUND";
     }
@@ -228,34 +231,35 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
         return newIID;
     }
 
-    public String cut(String IID) {
-        CutState cutState = IIDParser.getCutStateEnum(IID);
+    public String cut(String IID, IIDTag cutState) {
         switch (cutState) {
-            case WHOLE: 
+            case CutState.WHOLE: 
                 return "THIS SHOULDN'T BE WHOLE.";
-            case SLICED:
+            case CutState.SLICED:
                 slice(IID);
                 break;
-            case CHOPPED:
+            case CutState.CHOPPED:
                 chop(IID);
                 break;
-            case DICED:
+            case CutState.DICED:
                 dice(IID);
                 break;
-            case MINCED:
+            case CutState.MINCED:
                 mince(IID);
                 break;
-            case SHREDDED:
+            case CutState.SHREDDED:
                 shred(IID);
                 break;
-            case GROUND:
+            case CutState.GROUND:
                 ground(IID);
                 break;
-            case JULIENNED:
+            case CutState.JULIENNED:
                 julienne(IID);
                 break; 
-            case NONE:
+            case CutState.NONE:
                 return "THIS SHOULDN'T BE NONE.";
+            default:
+                return "THIS SHOULDN'T GET TO THIS POINT.";
         }
         return "ENUM NOT FOUND";
     }
