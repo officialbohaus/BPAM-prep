@@ -1,9 +1,9 @@
 public class InvalidIIDException extends RuntimeException {
     public InvalidIIDException() {
-        this("INVALID ITEM IID");
+        super("[INVALID ITEM IID]");
     }
 
-    public InvalidIIDException(String message) {
-        super(message);
+    public InvalidIIDException(String IID) {
+        super("[INVALID ITEM IID]: " + IID);
     }
 }

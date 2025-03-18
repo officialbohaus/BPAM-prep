@@ -29,18 +29,29 @@ public class IIDGenerator {
         return genIID(name, type, CookState.NONE, CutState.NONE, unit);
     }
 
+    // public static String genIID(String name, IngredientType type, CookState cookState, CutState cutState, IngredientUnit unit) {
+    //     return 
+    //     "#" + 
+    //     "NAME:"+ name + "-" +
+    //     "INGREDIENTTYPE:" + type.getTypeID() + "-" + 
+    //     "COOKSTATE:" + cookState.getCookID() + "-" + 
+    //     "CUTSTATE:" + cutState.getCutID() + "-" + 
+    //     "UNIT:" + unit.getunitID() +
+    //     "#";
+    // }
+
     // This generates an IID string matching the template above. 
     // TODO: create an actual template with String class methods (such as format) instead of relying on valid order of input.
     // Create cases for acceptable bases and descriptors
-    public static String genIID(String itemName, IngredientType type, CookState cookState, CutState cutState, IngredientUnit unit) {
+    public static String genIID(String name, IngredientType type, CookState cookState, CutState cutState, IngredientUnit unit) {
         return 
         "#" + 
-        "NAME:"+ itemName + "-" +
-        "BASE: " + "[BASE]" + "-" + 
-        "DESCRIPTOR: " + "[DESCRIPTOR]" + "-" +
-        "INGREDIENTTYPE: " + type.getTypeID() + "-" + 
-        "COOKSTATE:" + cookState.getCookID() + "-" + 
-        "CUTSTATE:" + cutState.getCutID() + "-" + 
+        "NAME:"+ name + " - " +
+        "BASE:" + "[BASE]" + " - " + 
+        "DESCRIPTOR:" + "[DESCRIPTOR]" + " - " +
+        "INGREDIENTTYPE:" + type.getTypeID() + " - " + 
+        "COOKSTATE:" + cookState.getCookID() + " - " + 
+        "CUTSTATE:" + cutState.getCutID() + " - " + 
         "UNIT:" + unit.getunitID() +
         "#";
     }

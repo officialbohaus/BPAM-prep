@@ -9,7 +9,7 @@ public enum CutState implements IIDTag{
     GROUND("GROUND"),
     JULIENNED("JULIENNE"),
     NONE("N/A");
-    // blended items
+    // CutState IDEA: BLENDED
 
     private String cutID;
 

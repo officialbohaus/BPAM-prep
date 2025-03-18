@@ -1,8 +1,8 @@
 public class InvalidNameException extends RuntimeException {
     public InvalidNameException() {
-        this("[INVALID ITEM NAME]");
+        super("[INVALID ITEM NAME]");
     }
-    public InvalidNameException(String message) {
-        super(message);
+    public InvalidNameException(String name) {
+        super("[INVALID ITEM NAME]: " + name);
     }
 }
