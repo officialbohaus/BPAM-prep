@@ -10,7 +10,6 @@ public class Step extends CookAndCutAndShit {
     
     private String description, name;
     // private String[] criticalTags;
-    private ArrayList<String> ingredientSet;
     private ArrayList<String> tagsAsString;
     private IIDTag IIDTagOut;
     private IIDTag[] tags;
@@ -55,6 +54,7 @@ public class Step extends CookAndCutAndShit {
      *  Use the cook() and cut() methods as needed
      */
     public String doThis(String IID) {
+        hasTags(IID);
         if (Arrays.asList(CookState.values()).contains(IIDTagOut)) {
             return cook(IID, IIDTagOut);
         } else if (Arrays.asList(CutState.values()).contains(IIDTagOut)) {
@@ -64,19 +64,22 @@ public class Step extends CookAndCutAndShit {
         }
     }
 
-    private boolean hasTags(String IID) {
-        // confirm we have the correct compponents of IID
-        // if the IID contains all of criticalTags, method return true
-        // if the IID DOES NOT contain all of criticalTags, method throws new exception
+    // confirm we have the correct compponents of IID
+    // if the IID contains all of criticalTags, method return true
+    // if the IID DOES NOT contain all of criticalTags, method throws new exception
+    private void hasTags(String IID) {
         Guards.checkIID(IID);
-        List<String> IIDTags = Arrays.asList(IIDParser.parseIID(IID));
-        if (IIDTags.containsAll(tagsAsString)) {
-            return true;
+        ArrayList<IIDTag> IIDTags = new ArrayList<>();
+        IIDTags.add(IIDParser.getCookStateEnum(IID));
+        IIDTags.add(IIDParser.getCutStateEnum(IID));
+        if (!IIDTags.containsAll(Arrays.asList(tags))) {
+            throw new InvalidRequestException();
         }
-        return false;
     }
 
-
+    // Check to see if the IIDTagsIn: 
+    //  - are actual enums
+    //  - is this necessary? 
     private boolean checkTagsIn(IIDTag[] IIDTagsIn) {
         for (IIDTag tagIn : IIDTagsIn) {
             if (!Arrays.asList(CookState.values()).contains(tagIn) && Arrays.asList(CutState.values()).contains(tagIn)) {
@@ -85,9 +88,4 @@ public class Step extends CookAndCutAndShit {
         }
         return true;
     }
-
-    private int getIIDComponentsInLength(String IID) {
-        return -1; // Added for testing
-    }
 }
-
