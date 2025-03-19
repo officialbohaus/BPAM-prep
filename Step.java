@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import Tags.CookState;
 import Tags.CutState;
@@ -9,11 +8,9 @@ import Tags.IIDTag;
 public class Step extends CookAndCutAndShit {
     
     private String description, name;
-    // private String[] criticalTags;
     private ArrayList<String> tagsAsString;
     private IIDTag IIDTagOut;
     private IIDTag[] tags;
-    private final int MIN_IID_COMPONENTS_IN_LENGTH = 1;
     // private final int MAX_IID_COMPONENTS_IN_LENGTH = 3;
 
     
