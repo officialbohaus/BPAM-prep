@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Recipe implements RecipeInterface {
     /*
@@ -17,12 +18,20 @@ public class Recipe implements RecipeInterface {
 
     private ArrayList<String> ingredients;
     private ArrayList<Integer> ingredientQuantity;
+    private String name, description;
+    private String[] filterTags;
+    private final int SERVING_SIZE; // Utilize SERVING_SIZE as a multiplier for the ingredients in the recipe
 
     // TODO: Implement description and name
 
-    public Recipe(IngredientSetInterface ingredients) {
+    //
+    public Recipe(String name, String description, IngredientSetInterface ingredients, String[] filterTags, int servingSize) {
+        this.name = name;
+        this.description = description;
+        this.filterTags = Arrays.copyOf(filterTags, filterTags.length);
         this.ingredients = new ArrayList<>();
         this.ingredients.addAll(ingredients.getIngredients());
+        SERVING_SIZE = servingSize;
 
         ingredientQuantity = new ArrayList<>();
     }

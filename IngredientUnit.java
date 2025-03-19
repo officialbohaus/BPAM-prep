@@ -21,5 +21,4 @@ public enum IngredientUnit {
         }
         throw new IllegalArgumentException("No enum constant with abbreviation: " + unitID);
     }
-
 }

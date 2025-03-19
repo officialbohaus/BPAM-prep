@@ -29,7 +29,6 @@ public class PantryNode {
      }
 
 
-
      // Transaction Methods =======================================================================
      
      public void removeQty() { removeQty(1); }
