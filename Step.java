@@ -54,7 +54,7 @@ public class Step extends CookAndCutAndShit {
      *  Use the cook() and cut() methods as needed
      */
     public String doThis(String IID) {
-        hasTags(IID);
+        hasAppropriateTags(IID);
         if (Arrays.asList(CookState.values()).contains(IIDTagOut)) {
             return cook(IID, IIDTagOut);
         } else if (Arrays.asList(CutState.values()).contains(IIDTagOut)) {
@@ -67,7 +67,8 @@ public class Step extends CookAndCutAndShit {
     // confirm we have the correct compponents of IID
     // if the IID contains all of criticalTags, method return true
     // if the IID DOES NOT contain all of criticalTags, method throws new exception
-    private void hasTags(String IID) {
+    // some items need to be cooked twice (e.g. pan-searing a steak and then baking it in an oven)
+    private void hasAppropriateTags(String IID) {
         Guards.checkIID(IID);
         ArrayList<IIDTag> IIDTags = new ArrayList<>();
         IIDTags.add(IIDParser.getCookStateEnum(IID));
@@ -75,6 +76,21 @@ public class Step extends CookAndCutAndShit {
         if (!IIDTags.containsAll(Arrays.asList(tags))) {
             throw new InvalidRequestException();
         }
+
+        // if IIDTagOut is raw and the IID is not raw, throw exception
+        if (IIDParser.getCookStateEnum(IID) != CookState.RAW && IIDTagOut == CookState.RAW) {
+            throw new InvalidRequestException("WHY ARE YOU TRYING TO TURN A COOKED INGREDIENT BACK TO BEING RAW");
+        }
+        
+        // if IIDTagOut != raw and IID cook state != raw, throw exception
+        // trying to cook a cooked item
+        // if ((IIDParser.getCookStateEnum(IID) != CookState.RAW) && (IIDTagOut != CookState.RAW)) {
+        //     throw new InvalidRequestException("ITEM IS ALREADY COOKED");
+        // } 
+
+        // if ((IIDParser.getCutStateEnum(IID)) != CutState.WHOLE) {
+        //     throw new InvalidRequestException("ITEM IS ALREADY CUT");
+        // }
     }
 
     // Check to see if the IIDTagsIn: 

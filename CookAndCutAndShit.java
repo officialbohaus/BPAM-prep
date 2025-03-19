@@ -56,6 +56,15 @@ public abstract class CookAndCutAndShit implements CookInterface, CutInterface {
         return newIID;
     }
 
+    public String sear(String IID) {
+        Guards.checkIID(IID);
+
+        IIDTags = IIDParser.parseIID(IID);
+        IIDTags[COOK_INDEX] = "COOKSTATE:" + CookState.SEARED.getCookID();
+        newIID = IIDParser.getIID(IIDTags);
+        return newIID;
+    }
+
     public String grill(String IID) {
         Guards.checkIID(IID);
 

@@ -1,13 +1,15 @@
 import Tags.CookState;
 import Tags.CutState;
+import Tags.IIDTag;
 
 public class IIDParser {
     
     // TODO: return appropriate enum types instead of strings
     // TODO: guard statements for getters
 
-    static final String IID_ORDER = "name-ingtype-cook-cut-unit";
+    static final String IID_ORDER = "#NAME:[NAME] - BASE:[BASE] - DESCRIPTOR:[DESCRIPTOR] - INGREDIENT_TYPE:[INGREDIENT_TYPE] - COOK_STATE:[COOK_STATE] - CUT_STATE:[CUT_STATE] - UNIT:[UNIT]#";
     private static String[] IIDTags;
+    private static String newIID;
     private static final int ACTUAL_TAG_INDEX = 1;
     private static final int NAME_INDEX = 0;
     private static final int BASE_INDEX = 1;
@@ -51,6 +53,19 @@ public class IIDParser {
         return IngredientType.fromTypeID(type);
     }
 
+    // needs a get tag to get the changed tag before putting the entire tag into the IID
+    // WARNING: The method setType() should not exist
+    // THIS IS JUST A TEST METHOD
+    // TODO: DELETE METHOD OR MAKE PRIVATE
+    public static void setType(String IID, IngredientType type) {
+        String[] IIDTags = IIDParser.parseIID(IID);
+        String[] typeTagSplit = IIDTags[TYPE_INDEX].split(":");
+        typeTagSplit[ACTUAL_TAG_INDEX] = type.getTypeID();
+        String newTypeTag = String.join(":", typeTagSplit);
+        IIDTags[TYPE_INDEX] = newTypeTag;
+        newIID = getIID(IIDTags);
+    }
+
     public static String getCookState(String IID) {
         return getTags(IID, COOK_INDEX);
     } 
@@ -61,6 +76,15 @@ public class IIDParser {
         String type = getTags(IID, COOK_INDEX);
         
         return CookState.fromCookID(type);
+    }
+
+    public static void setCookState(String IID, CookState cookState) {
+        String IIDTags[] = IIDParser.parseIID(IID);
+        String[] cookStateSplit = IIDTags[COOK_INDEX].split(":");
+        cookStateSplit[ACTUAL_TAG_INDEX] = cookState.getCookID();
+        String newCookState = String.join(":", cookStateSplit);
+        IIDTags[COOK_INDEX] = newCookState;
+        newIID = getIID(IIDTags);
     }
 
     public static String getCutState(String IID) {
@@ -93,6 +117,10 @@ public class IIDParser {
         for (int i = 1; i < IIDComponents.length; i++) {
             newIID += (i != IIDComponents.length - 1 ? (IIDComponents[i] + " - ") : IIDComponents[i]);
         }
+        return newIID;
+    }
+
+    public static String getNewIID() {
         return newIID;
     }
 

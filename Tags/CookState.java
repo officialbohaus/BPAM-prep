@@ -6,6 +6,7 @@ public enum CookState implements IIDTag {
     BAKED("BAKE"),
     FRIED("FRY"),
     SAUTEED("SAUTE"),
+    SEARED("SEAR"),
     GRILLED("GRILL"),
     ROASTED("ROAST"),
     SMOKED("SMOKE"),

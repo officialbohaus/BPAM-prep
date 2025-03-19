@@ -49,9 +49,9 @@ public class IIDGenerator {
         "NAME:"+ name + " - " +
         "BASE:" + "[BASE]" + " - " + 
         "DESCRIPTOR:" + "[DESCRIPTOR]" + " - " +
-        "INGREDIENTTYPE:" + type.getTypeID() + " - " + 
-        "COOKSTATE:" + cookState.getCookID() + " - " + 
-        "CUTSTATE:" + cutState.getCutID() + " - " + 
+        "INGREDIENT_TYPE:" + type.getTypeID() + " - " + 
+        "COOK_STATE:" + cookState.getCookID() + " - " + 
+        "CUT_STATE:" + cutState.getCutID() + " - " + 
         "UNIT:" + unit.getunitID() +
         "#";
     }
