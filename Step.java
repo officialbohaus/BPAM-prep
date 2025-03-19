@@ -54,6 +54,7 @@ public class Step extends CookAndCutAndShit {
      *  Use the cook() and cut() methods as needed
      */
     public String doThis(String IID) {
+        checkTagsIn(tags);
         hasAppropriateTags(IID);
         if (Arrays.asList(CookState.values()).contains(IIDTagOut)) {
             return cook(IID, IIDTagOut);
@@ -96,12 +97,11 @@ public class Step extends CookAndCutAndShit {
     // Check to see if the IIDTagsIn: 
     //  - are actual enums
     //  - is this necessary? 
-    private boolean checkTagsIn(IIDTag[] IIDTagsIn) {
+    private void checkTagsIn(IIDTag[] IIDTagsIn) {
         for (IIDTag tagIn : IIDTagsIn) {
-            if (!Arrays.asList(CookState.values()).contains(tagIn) && Arrays.asList(CutState.values()).contains(tagIn)) {
-                return false;
+            if (!Arrays.asList(CookState.values()).contains(tagIn) && !Arrays.asList(CutState.values()).contains(tagIn)) {
+            throw new InvalidRequestException();
             }
         }
-        return true;
     }
 }

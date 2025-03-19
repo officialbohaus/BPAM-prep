@@ -13,13 +13,6 @@ public class Guards {
     private static final int IID_LENGTH = 7; // TODO remember to change this if we change IID!
     private static List<String> list;
     
-    // public static void checkIID(String IID) {
-    //     checkIIDLength(IID);
-    //     checkCutEnum(IID);
-    //     checkTypeEnum(IID);
-    //     checkCookEnum(IID);
-    // }
-    
     public static void checkIID(String IID) {
         String[] IIDTags = IID.split(" - ");
         String[] ingredientType = IIDTags[TYPE_INDEX].split(":");
