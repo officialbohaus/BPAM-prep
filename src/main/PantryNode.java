@@ -1,3 +1,4 @@
+package src.main;
 public class PantryNode {
     /* this represents each "box" for ingredients, it will combine an IID with a
      * quantity.
@@ -25,8 +26,9 @@ public class PantryNode {
      public PantryNode(String IID, int quantity) {
          if (quantity < 0) { throw new IllegalArgumentException("Cannot create a PantryNode with quantity < 0"); }
          this.IID = IID;
-         this.quantity = quantity;
+         this.quantity = 0;
      }
+
 
 
      // Transaction Methods =======================================================================
@@ -36,8 +38,7 @@ public class PantryNode {
      public void removeQty(int quantity) {
       if (quantity > this.quantity) { throw new IllegalArgumentException("Cannot remove " + quantity + " from " + this.quantity ); }
         this.quantity -= quantity;
-      
-      if (quantity < 0) { throw new IllegalArgumentException("Cannot remove a negative Quantity."); }
+        
      }
 
    public void addQty() { addQty(1); }
@@ -61,8 +62,6 @@ public class PantryNode {
      }
 
      public int getQty() { return quantity; }
-     
-     public String setIID(String string) { return string;}
 
      public String getID() { return IID; }
 
