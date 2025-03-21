@@ -1,4 +1,4 @@
-public enum FilterByMeal {
+public enum FilterByMeal implements FilterInterface {
     APPETIZER("APPETIZER"),
     BREAKFAST("BREAKFAST"),
     CONDIMENTS("CONDIMENT"),
